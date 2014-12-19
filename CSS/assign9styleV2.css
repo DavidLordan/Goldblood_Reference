@@ -306,8 +306,8 @@ audio{
         width:415px;
     }
     audio{
-         width: 280px;
-        height: 30px;
+         width: 275px;
+        height: 40px;
         margin-left: 4px;
 
 
@@ -315,7 +315,7 @@ audio{
         border-radius: 0px;
         margin-top: 0px;
 
-        background-color: white;
+        background-color: #3399ff;
 
 
 
