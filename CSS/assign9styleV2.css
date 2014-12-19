@@ -42,7 +42,7 @@ body{
 
 .Intro p{
     font-size: 1.2em;
-    
+
 }
 
 .Intro{
@@ -80,7 +80,7 @@ a{
 
     margin-top: 5px;
     margin-right:10px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 /* Hides columns that are selected by the check-boxes in the introduction.*/
@@ -149,7 +149,7 @@ td{
 /*Applies the Zeppelin font to the table headers.*/
 
 th{
-   
+
     color:white;
     background-color: #242B33;
 }
@@ -223,7 +223,7 @@ th{
 
 #interaction{
     text-align: center;
-    
+
 }
 
 #swap{
@@ -264,14 +264,16 @@ th{
 }
 /*
 audio{
-    margin-top: 10px;
+    
     text-align: center;
     background-color: black;
     text-align: center;
     
+    
 }
 
 #audCtrl{
+    margin-top: 30px;
     text-align: center;
     border-style: solid;
     border-color:white;
@@ -280,19 +282,15 @@ audio{
     width: 330px;
     margin-left: 83px;
 }
-
-
-
 */
-/*///////////////////////////////////////////////////////*/
+
 
 audio{
-    width: 600px;
-    height: 200px;
+    width: 400px;
+    height: 50px;
 }
 
-
-
+/*///////////////////////////////////////////////////////*/
 
 /* Styling for the error messages displayed to the user. */
 
@@ -308,5 +306,5 @@ audio{
 #setlist .songRow{
     width:459px;
     font-size: 1.5em;
-    
+
 }
