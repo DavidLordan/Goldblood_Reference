@@ -306,9 +306,9 @@ audio{
         width:415px;
     }
     audio{
-        width: 250px;
+         width: 280px;
         height: 30px;
-
+        margin-left: 4px;
 
 
         border-style: none;
