@@ -262,7 +262,7 @@ th{
     color:white;
     text-align: center;
 }
-
+/*
 audio{
     margin-top: 10px;
     text-align: center;
@@ -280,6 +280,7 @@ audio{
     width: 330px;
     margin-left: 83px;
 }
+*/
 /*///////////////////////////////////////////////////////*/
 
 /* Styling for the error messages displayed to the user. */
