@@ -262,33 +262,26 @@ th{
     color:white;
     text-align: center;
 }
-/*
+
 audio{
     
     text-align: center;
     background-color: black;
     text-align: center;
-    
-    
-}
-
-#audCtrl{
     margin-top: 30px;
     text-align: center;
     border-style: solid;
     border-color:white;
     border-radius: 25px;
     background-color: black;
-    width: 330px;
-    margin-left: 83px;
-}
-*/
-
-
-audio{
+    
+    
     width: 500px;
     height: 130px;
+    
 }
+
+
 
 /*///////////////////////////////////////////////////////*/
 
