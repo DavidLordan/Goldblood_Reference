@@ -22,7 +22,6 @@ This file sets the CSS styling rules which control the page's presentation.
 */
 /* Global styling that applies the entire body of the page*/
 body{
-    width:550px;
     background-color: #3399ff;
     color: white;
     font-family: 'Helvetica', sans-serif;
