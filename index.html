@@ -65,12 +65,12 @@
         <!-- Container for an introduction and instructions to the user.-->
         <div class="Intro">
             <h1>Goldblood Songs!</h1>
-            
-          
+
+
         </div><!-- End 'Intro' div.-->
 
 
-       
+
 
 
         <!-- Table which contains the playlist. The table is hidden if no songs have been added.-->
@@ -79,10 +79,10 @@
 
                 <!-- Table headers for the playlist songs names and lengths.-->
                 <tr>
-                   
+
                     <th>#</th>
                     <th>SONG</th>
-                    
+
                 </tr>
 
                 <!-- List of songs in the playlist and their lengths. Created using 
@@ -92,7 +92,7 @@
 
                     <!-- Radio buttons which are used to select the song which is to be
                          manipulated by the up and down buttons. Calls the 'updateActive' function. -->
-                    
+
 
                     <td>{{$index + 1}}</td>
 
@@ -105,7 +105,7 @@
                     </td>
 
 
-                  
+
                 </tr>
 
             </table><!-- End of play list table.-->
@@ -114,16 +114,18 @@
             <!-- Div used to contain the up and down arrows, swap button and total length.-->
             <div id="interaction">
 
-                
+
 
                 <!-- Div which allows specific styling of the buttons.-->
                 <div id="buttonWrapper">
 
-                    
+
 
                 </div><!-- End buttonWrapper div-->
 
-                
+                <div id="audCtrl">
+                    <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
+                </div>
 
 
 
@@ -134,10 +136,6 @@
             </div><!-- End interaction div-->
 
         </div><!-- End setlist div.-->
-        
-        
-                    <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
-              
 
     </body>
 
