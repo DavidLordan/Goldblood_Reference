@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="assign9">
+    <head>
+        <meta charset="utf-8">
+
+        <!--
+          File: GUI_1_Assignment_9.html
+          91.461 GUI Programming 1, Assignment 9: Using AngularJS
+          David Lordan, UMass Lowell Computer Science, david_lordan@student.uml.edu
+          Alternate email: davidlordan@gmail.com
+          Created on Dec 6th, 2014 11:16 AM, updated on Dec 10th, 2014 9:15 PM
+
+          The purpose of this assignment is to demonstrate the use of AngularJS.
+          Data is to be read from a JSON file via Ajax and dispalyed to the user.
+          The user can then manipulate the data in some way.
+        
+          For this assignment I created a setlist/playlist maker. A list of Led Zeppelin
+          songs taken from a JSON file are shown. The user may then use check-boxes to
+          select songs which are to be added to a 2nd list. The ordering of the 2nd list
+          may be manipulated by either clicking on a pair of songs which can be swapped,
+          or by using a radio button to select a song that may be moved with up and down
+          buttons. A running total of the length is shown at the bottom of the list.
+          All of the listed information as well as the total length are filtered using
+          AngularJS. The ng-class attribute is also used to add and remove classes
+          which allow color coding of various states, such as showing which songs are 
+          active.
+        
+        
+          The majority of this code is based on the examples provided by Curran Kelleher
+          which can be found at the following URL: 
+          http://curran.github.io/screencasts/introToAngular/exampleViewer/#/
+        
+          Other parts of the code were taken from the sample code provided by 
+          Prof. Jesse Heines for his GUI Programming 1 course at UMass Lowell.
+        
+          Song information for the JSON file was found on wikipedia:
+          http://en.wikipedia.org/wiki/List_of_songs_recorded_by_Led_Zeppelin
+        
+          
+        
+          The page is also stylized using CSS, demonstrating skills that have been
+          learned throughout the course. 
+        
+        -->
+
+
+        <title>Goldblood</title>
+
+        <!-- Link to load the AngularJS framework.-->
+        <script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js></script>
+
+        <!-- External Javascript file containing custom functions and the AngularJS 
+             model and controller that allow the page to function.-->
+        <script src="JS/assign9script.js"></script>
+
+        <!-- Link to CSS file used to stylize the page.-->
+        <link href="CSS/assign9styleV2.css" rel="stylesheet" type="text/css"> 
+
+    </head>
+
+
+    <!-- Directive which says this page will use the assign9Ctrl ng-controller. -->
+    <body ng-controller="assign9Ctrl">
+
+        <!-- Container for an introduction and instructions to the user.-->
+        <div class="Intro">
+            <h1>Goldblood Songs!</h1>
+            
+          
+        </div><!-- End 'Intro' div.-->
+
+
+       
+
+
+        <!-- Table which contains the playlist. The table is hidden if no songs have been added.-->
+        <div id="setlist">
+            <table>
+
+                <!-- Table headers for the playlist songs names and lengths.-->
+                <tr>
+                   
+                    <th>#</th>
+                    <th>SONG</th>
+                    
+                </tr>
+
+                <!-- List of songs in the playlist and their lengths. Created using 
+                     the ng-repeat directive. Each row of the table way be referenced 
+                     with the 'i' variable. -->
+                <tr ng-repeat="i in myList| filter:query | orderBy:'pos'" >
+
+                    <!-- Radio buttons which are used to select the song which is to be
+                         manipulated by the up and down buttons. Calls the 'updateActive' function. -->
+                    
+
+                    <td>{{$index + 1}}</td>
+
+
+                    <!-- The list of song names. Makes use of the ng-class attribute to add
+                         remove classes which allow the colors of selected songs to be changed.
+                         When the song names are clicked the 'setSwapClass' function is called.-->
+                    <td class="songRow" ng-class="{move: i === moveActive}">
+                        <a href="" ng-click="updateActive(i)">{{i.name}}</a>
+                    </td>
+
+
+                  
+                </tr>
+
+            </table><!-- End of play list table.-->
+
+
+            <!-- Div used to contain the up and down arrows, swap button and total length.-->
+            <div id="interaction">
+
+                
+
+                <!-- Div which allows specific styling of the buttons.-->
+                <div id="buttonWrapper">
+
+                    
+
+                </div><!-- End buttonWrapper div-->
+
+                <div id="audCtrl">
+                    <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
+                </div>
+
+
+
+
+                <!-- Div used to store and display error messages to the user.-->
+                <div id="error">{{error}}</div>
+
+            </div><!-- End interaction div-->
+
+        </div><!-- End setlist div.-->
+
+    </body>
+
+</html>
