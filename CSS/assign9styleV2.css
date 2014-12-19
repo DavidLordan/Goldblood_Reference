@@ -280,8 +280,19 @@ audio{
     width: 330px;
     margin-left: 83px;
 }
+
+
+
 */
 /*///////////////////////////////////////////////////////*/
+
+audio{
+    width: 400px;
+    height: 200px;
+}
+
+
+
 
 /* Styling for the error messages displayed to the user. */
 
