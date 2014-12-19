@@ -299,27 +299,20 @@ audio{
 
 }
 
-@media only screen and (max-width: 1024px)  { 
-
+@media only screen and (max-width: 1024px) {
     body{
-
         width:415px;
     }
     audio{
-         width: 275px;
+        padding: 0px 5px 6px 5px;
+        width: 275px;
         height: 40px;
-        margin-left: 7px;
-
-
-        border-style: none;
-        border-radius: 0px;
+        margin-left: 1px;
+        border-radius: 40px;
+        
         margin-top: 7px;
-
         background-color: #242B33;
-
-
-
-
+        background-color:black;
     }
     #setlist, #songTable{
         display:inline-block;
@@ -338,9 +331,6 @@ audio{
         width:250px;
         font-size: .8em;
     }
-
-
-
     .Intro{
         border-style: solid;
         border-color: white;
@@ -354,8 +344,5 @@ audio{
     #interaction{
         text-align: center;
         width: 250px;
-
     }
-
-
-}   
+}
