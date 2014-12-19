@@ -286,20 +286,51 @@ and (max-device-width : 667px)
 and (orientation : portrait) {
    
    audio{
-      border-style: none;
-    
+    border-style: none;
     border-radius: 0px;
-    
     margin-top: 10px;
-      
-      
-   
     width: 500px;
     height: 130px;
     
 }
    
    /* STYLES GO HERE */ }
+   
+   @media only screen 
+    and (min-device-width : 375px) 
+    and (max-device-width : 667px) 
+    and (orientation : landscape) 
+    and (-webkit-min-device-pixel-ratio : 2)
+{
+     audio{
+    border-style: none;
+    border-radius: 0px;
+    margin-top: 10px;
+    width: 500px;
+    height: 130px;
+    
+}
+   
+}
+
+@media only screen 
+    and (min-device-width : 375px) 
+    and (max-device-width : 667px) 
+    and (orientation : portrait) 
+    and (-webkit-min-device-pixel-ratio : 2)
+{ 
+     audio{
+    border-style: none;
+    border-radius: 0px;
+    margin-top: 10px;
+    width: 500px;
+    height: 130px;
+    
+}
+   
+}
+   
+   
 
 /*///////////////////////////////////////////////////////*/
 
