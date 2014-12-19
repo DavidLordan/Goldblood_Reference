@@ -218,3 +218,7 @@ have the cell size jump as songs of different name lengths are added. */
     }
 
 }   
+
+#test{
+    background-color: black;
+}
