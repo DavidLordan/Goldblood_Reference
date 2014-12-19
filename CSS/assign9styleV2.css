@@ -306,8 +306,8 @@ audio{
         width:415px;
     }
     audio{
-        width: 280px;
-        height: 50px;
+        width: 250px;
+        height: 30px;
 
 
 
@@ -315,7 +315,7 @@ audio{
         border-radius: 0px;
         margin-top: 0px;
 
-        background-color: black;
+        background-color: white;
 
 
 
@@ -344,7 +344,7 @@ audio{
     .Intro{
         border-style: solid;
         border-color: white;
-        padding: 10px 25px;
+        padding: 0px 0px;
         background-color: #242B33;
         box-shadow: 1px 1px 2px black;
         width:300px;
@@ -353,7 +353,7 @@ audio{
     }
     #interaction{
         text-align: center;
-        width: 270px;
+        width: 250px;
 
     }
 
