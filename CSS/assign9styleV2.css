@@ -263,6 +263,21 @@ th{
     text-align: center;
 }
 
+audio{
+    
+    text-align: center;
+    background-color: black;
+    text-align: center;
+    border-style: solid;
+    border-color:white;
+    border-radius: 25px;
+    background-color: black;
+    margin-top: 25px;
+    
+    width: 400px;
+    height: 40px;
+    
+}
 
 
 @media only screen 
@@ -271,6 +286,7 @@ and (max-device-width : 667px)
 and (orientation : portrait) {
    
    audio{
+    border-style:none;
     width: 500px;
     height: 130px;
     
