@@ -1,36 +1,50 @@
 @charset "utf-8";
+
 /*
-File: assign9styleV2.html
-91.461 GUI Programming 1, Assignment 9: Using AngularJS
-David Lordan, UMass Lowell Computer Science, david_lordan@student.uml.edu
-Alternate email: davidlordan@gmail.com
-Created on Dec 6th, 2014 11:18 AM, updated on Dec 10th, 2014 9:19 PM
-The purpose of this assignment is to demonstrate the use of AngularJS.
-Data is to be read from a JSON file via Ajax and dispalyed to the user.
-The user can then manipulate the data in some way.
-For this assignment I created a setlist/playlist maker. A list of Led Zeppelin
-songs taken from a JSON file are shown. The user may then use check-boxes to
-select songs which are to be added to a 2nd list. The ordering of the 2nd list
-may be manipulated by either clicking on a pair of songs which can be swapped,
-or by using a radio button to select a song that may be moved with up and down
-buttons. A running total of the length is shown at the bottom of the list.
-All of the listed information as well as the total length are filtered using
-AngularJS. The ng-class attribute is also used to add and remove classes
-which allow color coding of various states, such as showing which songs are
-active.
-This file sets the CSS styling rules which control the page's presentation.
+   
+    File: assign9styleV2.html
+    91.461 GUI Programming 1, Assignment 9: Using AngularJS
+    David Lordan, UMass Lowell Computer Science, david_lordan@student.uml.edu
+    Alternate email: davidlordan@gmail.com
+    Created on Dec 6th, 2014 11:18 AM, updated on Dec 10th, 2014 9:19 PM
+
+    The purpose of this assignment is to demonstrate the use of AngularJS.
+    Data is to be read from a JSON file via Ajax and dispalyed to the user.
+    The user can then manipulate the data in some way.
+
+    For this assignment I created a setlist/playlist maker. A list of Led Zeppelin
+    songs taken from a JSON file are shown. The user may then use check-boxes to
+    select songs which are to be added to a 2nd list. The ordering of the 2nd list
+    may be manipulated by either clicking on a pair of songs which can be swapped,
+    or by using a radio button to select a song that may be moved with up and down
+    buttons. A running total of the length is shown at the bottom of the list.
+    All of the listed information as well as the total length are filtered using
+    AngularJS. The ng-class attribute is also used to add and remove classes
+    which allow color coding of various states, such as showing which songs are 
+    active.
+
+
+    This file sets the CSS styling rules which control the page's presentation.
+        
 */
+
 /* Global styling that applies the entire body of the page*/
+
 body{
+
     background-color: #3399ff;
     color: white;
     font-family: 'Helvetica', sans-serif;
     height: 100%
 }
+
 /* Styling rules for page's introduction. */
+
 .Intro p{
     font-size: 1.2em;
+
 }
+
 .Intro{
     border-style: solid;
     border-color: white;
@@ -40,32 +54,47 @@ body{
     width:457px;
     text-align: center;
 }
+
+
 /* Overrides the default a tag rules, used for table headers. */
+
 a{
     color:white;
     text-decoration: none;
 }
+
+
 /* Styling for the two song tables. Places them side by side and add similar colors.*/
+
 #setlist, #songTable{
     display:inline-block;
     position: relative;
     float:left;
+
     border-style: solid;
     border-color: white;
     padding: 5px;
     box-shadow: 2px 2px 2px black;
+
     background-color: #242B33;
+
     margin-top: 5px;
     margin-right:10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
+
 /* Hides columns that are selected by the check-boxes in the introduction.*/
+
 .hide{
     display: none;
 }
+
+
+
 /* Overrides the default styping for checkboxes, applies to several browsers.
-This solution was found at the link below:
-http://stackoverflow.com/questions/306924/checkbox-size */
+   This solution was found at the link below:
+   http://stackoverflow.com/questions/306924/checkbox-size */
+
 #songTable input[type=checkbox]
 {
     /* Double-sized Checkboxes */
@@ -75,111 +104,150 @@ http://stackoverflow.com/questions/306924/checkbox-size */
     -o-transform: scale(1.5); /* Opera */
     padding: 10px;
 }
+
 /*///////////////////////////////////////////////////////*/
 /* Striping for the table contents.*/
+
 #songTable tr:nth-child(2n){
     background-color:white;
     color:black;
 }
+
 #songTable tr:nth-child(2n-1){
     background-color: #00ff00;
     color:black;
 }
+
 #setlist tr:nth-child(2n){
     background-color:white;
     color:black;
 }
+
 #setlist tr:nth-child(2n-1){
     background-color: #ff6633;
     color:black;
 }
+
 /*///////////////////////////////////////////////////////*/
+
 /* Applies a subtle border to the table within the setlist div*/
+
 #setlist table{
     border-style: solid;
     border-color: white;
     border-width: 1px;
 }
+
 /*Minor styling for the table data, forces all info on to one line.*/
+
 td{
     padding: 3px;
     text-align: center;
     white-space:nowrap
 }
+
 /*Applies the Zeppelin font to the table headers.*/
+
 th{
+
     color:white;
     background-color: #242B33;
 }
+
 /* Hover effects for table headers, used to show 'clickability', implying the sort feature.*/
+
 #songTable th:hover:not(.selection){
     background-color: red;
 }
+
 #songTable th:hover a{
     color:black;
 }
+
 /*Overrides default styling for a tag. Used for clickable songs in the setlist.*/
+
 #setlist a{
     color:black;
 }
+
 /*Changes the background color of the songs being swapped to a light blue.*/
+
 #setlist .active{
     background-color:#33ffcc;
 }
+
 /* Sets the background color of the songs being moved to a light green.*/
+
 #setlist .move{
     background-color:#00ff00;
 }
+
 /* When there are no songs in the setlist, the hide class is applied, removing it from view.*/
+
 .hideSet {
     display:none !important;
 }
+
 /*If a song is both movable and swappable it is given a light purple color.*/
+
 #setlist .both{
     background-color:#cc00cc;
 }
+
 /*///////////////////////////////////////////////////////*/
 /* Styling and placement for the user setlist controls, such as the up and down
-buttons, the swap button, as well as the total time display. */
+   buttons, the swap button, as well as the total time display. */
+
 #controls{
     text-align: center;
+
     background-color: white;
     padding: 5px 6px 0px 6px;
+
     border-style: groove;
     border-radius: 30px;
     border-color: #00ff00;
     background: black;
+
     display:inline-block;
     position: relative;
     float: left;
 }
+
 #controls input{
     margin: 0px 5px;
     border-style: solid;
     border-color: white;
     border-radius: 25px;
 }
+
 #interaction{
     text-align: center;
+
 }
+
 #swap{
     font-size: 1.3em;
     margin-left: 20px;
     margin-top: 5px;
+
     border-style: solid;
     border-radius: 20px;
     border-color: #3399ff;
     border-width: 3px;
     background-color: black;
     color:white;
+
     display:inline-block;
     position: relative;
     float: left;
 }
+
 #buttonWrapper{
     display: inline-block;
     margin-top: 20px;
 }
+
 #total{
     border-style:groove;
     border-color: #ffff00;
@@ -187,39 +255,107 @@ buttons, the swap button, as well as the total time display. */
     margin-left: 70px;
     margin-right: 70px;
     margin-top: 25px;
+
     font-size: 1.3em;
     padding: 5px 10px;
     background-color: black;
     color:white;
     text-align: center;
 }
+
 audio{
-    width: 500px;
-    height: 130px;
+
+    text-align: center;
+    background-color: black;
+    text-align: center;
+    border-style: solid;
+    border-color:white;
+    border-radius: 25px;
+    background-color: black;
+    margin-top: 25px;
+
+    width: 400px;
+    height: 40px;
+
 }
+
+
 /*///////////////////////////////////////////////////////*/
+
 /* Styling for the error messages displayed to the user. */
+
 #error{
     text-align: center;
     color:red;
     margin:10px;
 }
+
 /* Forces the song cell's width to be as wide as the longest song name. This avoids
-have the cell size jump as songs of different name lengths are added. */
+   have the cell size jump as songs of different name lengths are added. */
+
 #setlist .songRow{
     width:459px;
     font-size: 1.5em;
+
 }
 
-@media only screen and (max-width: 600px)  { 
+@media only screen and (max-width: 415px)  { 
 
     body{
-        background-color: white;
+
+        width:415px;
+    }
+    audio{
+        width: 280px;
+        height: 50px;
+
+
+
+        border-style: none;
+        border-radius: 0px;
+        margin-top: 0px;
+
+        background-color: black;
+
+
+
+
+    }
+    #setlist, #songTable{
+        display:inline-block;
+        position: relative;
+        float:left;
+        border-style: solid;
+        border-color: white;
+        padding: 5px;
+        box-shadow: 2px 2px 2px black;
+        background-color: #242B33;
+        margin-top: 5px;
+        margin-right:10px;
+        margin-bottom: 5px;
+    }
+    #setlist .songRow{
+        width:250px;
+        font-size: .8em;
     }
 
-}   
 
-#test{
-    background-color: black;
-    width: 1000px;
-}
+
+    .Intro{
+        border-style: solid;
+        border-color: white;
+        padding: 10px 25px;
+        background-color: #242B33;
+        box-shadow: 1px 1px 2px black;
+        width:300px;
+        text-align: center;
+        font-size: .9em;
+    }
+    #interaction{
+        text-align: center;
+        width: 270px;
+
+    }
+
+
+}   
