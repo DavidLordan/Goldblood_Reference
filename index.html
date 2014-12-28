@@ -64,8 +64,8 @@
 
         <!-- Container for an introduction and instructions to the user.-->
         <div class="Intro">
-            <h1>Goldblood Songs!</h1>
-            <p>Click or tap on a song to select it, then simply press play.</p>
+            <h1>Goldblood Songs</h1>
+            <p>Click or tap on a song to select it, then just press play!</p>
         </div><!-- End 'Intro' div.-->
 
 
@@ -99,7 +99,7 @@
                 <!-- List of songs in the playlist and their lengths. Created using 
                      the ng-repeat directive. Each row of the table way be referenced 
                      with the 'i' variable. -->
-                <tr ng-repeat="i in myList| filter:query | orderBy:'pos'" >
+                <tr ng-class="{move: i === moveActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
 
                     <!-- Radio buttons which are used to select the song which is to be
                          manipulated by the up and down buttons. Calls the 'updateActive' function. -->
@@ -109,7 +109,7 @@
                     <!-- The list of song names. Makes use of the ng-class attribute to add
                          remove classes which allow the colors of selected songs to be changed.
                          When the song names are clicked the 'setSwapClass' function is called.-->
-                    <td class="songRow" ng-class="{move: i === moveActive}">
+                    <td class="songRow">
                         <a href="" ng-click="updateActive(i)">{{i.name}}</a>
                     </td>
                 </tr>
