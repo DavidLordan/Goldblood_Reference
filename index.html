@@ -65,8 +65,7 @@
         <!-- Container for an introduction and instructions to the user.-->
         <div class="Intro">
             <h1>Goldblood Songs!</h1>
-
-
+            <p>Click or tap on a song to select it, then simply press play.</p>
         </div><!-- End 'Intro' div.-->
 
 
@@ -75,6 +74,18 @@
 
         <!-- Table which contains the playlist. The table is hidden if no songs have been added.-->
         <div id="setlist">
+
+            <!-- Div used to contain the up and down arrows, swap button and total length.-->
+            <div id="interaction">
+                <!-- Div which allows specific styling of the buttons.-->
+                <div id="buttonWrapper">
+                </div><!-- End buttonWrapper div-->
+                <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
+                <!-- Div used to store and display error messages to the user.-->
+                <div id="error">{{error}}</div>
+            </div><!-- End interaction div-->
+
+
             <table>
 
                 <!-- Table headers for the playlist songs names and lengths.-->
@@ -93,9 +104,7 @@
                     <!-- Radio buttons which are used to select the song which is to be
                          manipulated by the up and down buttons. Calls the 'updateActive' function. -->
 
-
                     <td>{{$index + 1}}</td>
-
 
                     <!-- The list of song names. Makes use of the ng-class attribute to add
                          remove classes which allow the colors of selected songs to be changed.
@@ -103,41 +112,11 @@
                     <td class="songRow" ng-class="{move: i === moveActive}">
                         <a href="" ng-click="updateActive(i)">{{i.name}}</a>
                     </td>
-
-
-
                 </tr>
 
             </table><!-- End of play list table.-->
 
-
-            <!-- Div used to contain the up and down arrows, swap button and total length.-->
-            <div id="interaction">
-
-
-
-                <!-- Div which allows specific styling of the buttons.-->
-                <div id="buttonWrapper">
-
-
-
-                </div><!-- End buttonWrapper div-->
-
-
-                <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
-
-
-
-
-
-                <!-- Div used to store and display error messages to the user.-->
-                <div id="error">{{error}}</div>
-
-            </div><!-- End interaction div-->
-
         </div><!-- End setlist div.-->
-
-        
 
     </body>
 
