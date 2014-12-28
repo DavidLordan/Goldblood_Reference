@@ -354,6 +354,7 @@ audio{
         font-size: .8em;
     }
     #interaction{
+        margin-top: 15px;
         text-align: center;
         width: 250px;
     }
