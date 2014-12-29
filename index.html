@@ -77,12 +77,11 @@
 
             <!-- Div used to contain the up and down arrows, swap button and total length.-->
             <div id="interaction">
-                <!-- Div which allows specific styling of the buttons.-->
-                <div id="buttonWrapper">
-                </div><!-- End buttonWrapper div-->
-                <audio controls ng-src="{{audioActive|audioFilter}}" type="audio/mp3"></audio> 
-                <!-- Div used to store and display error messages to the user.-->
-                <div id="error">{{error}}</div>
+                <audio ng-src="{{audioActive|audioFilter}}" id="my-audio"></audio>
+                <div id="controls">
+                    <!-- custom play and pause buttons -->
+                    <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
+                </div>
             </div><!-- End interaction div-->
 
 
@@ -91,8 +90,8 @@
                 <!-- Table headers for the playlist songs names and lengths.-->
                 <tr>
 
-                    <th>#</th>
-                    <th>SONG</th>
+                    <th id="numHeader">#</th>
+                    <th id="songHeader">SONG</th>
 
                 </tr>
 

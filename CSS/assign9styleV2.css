@@ -207,27 +207,14 @@ a{
 /* Styling and placement for the user setlist controls, such as the up and down
    buttons, the swap button, as well as the total time display. */
 
-#controls{
-    text-align: center;
-
-    background-color: white;
-    padding: 8px 10px 0px 6px;
-
-    border-style: groove;
-    border-radius: 30px;
-    border-color: #00ff00;
-    background: black;
-
-    display:inline-block;
-    position: relative;
-    float: left;
-}
-
 #controls input{
-    margin: 0px 5px;
+    
     border-style: solid;
     border-color: white;
     border-radius: 25px;
+    background-color: black;
+    padding:5px;
+    margin-bottom: 8px;
 }
 
 #interaction{
@@ -353,11 +340,7 @@ audio{
         text-align: center;
         font-size: .8em;
     }
-    #interaction{
-        margin-top: 15px;
-        text-align: center;
-        width: 250px;
-    }
+    
 } 
 
 
@@ -374,4 +357,17 @@ audio{
     border-style: solid;
     border-color: red;
     border-width: 1px;
+}
+
+#numHeader{
+    border-right-style: solid;
+    border-right-color: white;
+    border-right-width: 1px;
+    width: 10px;
+}
+
+#songHeader{
+    border-left-style: solid;
+    border-left-color: white;
+    border-left-width: 1px;
 }

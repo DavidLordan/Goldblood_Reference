@@ -51,18 +51,22 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //Fetches the song list, stored in a JSON file, via AJAX
     $http.get('JSON/GB_songs.json').success(function (data) {
-        
+
         $scope.myList = data;
     });
 
     // An array of the list of song currently in the setlit. 
-   // $scope.myList = [];
+    // $scope.myList = [];
 
     // The next position of the song to be added. Also used to determine the number of songs
     // in the list. 
     $scope.nextPos = 0;
-    
-    $scope.audioActive = "Work";
+
+    $scope.playing = false;
+
+    $scope.playbackIcon = "Resources/playIcon.png";
+
+    $scope.audioActive = "";
 
     /**
      * Function to ammend the set list by adding or removing a song.
@@ -238,8 +242,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $scope.moveActive = i;
         $scope.audioActive = $scope.moveActive.name;
         console.log($scope.audioActive);
-        
-        
+
+
     };
 
     // If there are two swappable songs, a simple swap algorithm is used to trade their
@@ -256,6 +260,42 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $scope.error = "Please select up to 2 songs to swap.";
         }
     };//End swap() function.
+
+
+
+    $scope.togglePlayback = function () {
+        var myAudio = document.getElementById('my-audio');
+
+        if ($scope.audioActive !== "") {
+
+
+
+
+            if ($scope.playing) {
+                $scope.playing = false;
+                $scope.playbackIcon = "Resources/playIcon.png";
+                myAudio.pause();
+                console.log("yo");
+            }
+            else {
+                $scope.playing = true;
+                $scope.playbackIcon = "Resources/pauseIcon.png";
+                myAudio.play();
+                console.log("lo");
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+    };
+
 
 });//End assign9.controller
 
@@ -280,7 +320,7 @@ assign9.filter("audioFilter", function () {
 
     return function (i) {
 
-    return "Audio/ " + i + ".mp3";
+        return "Audio/ " + i + ".mp3";
     };
 
 });
@@ -313,3 +353,22 @@ assign9.filter("timeFilter", function () {
 });
 
 
+window.onload = function () {
+
+    var myAudio = document.getElementById('my-audio');
+    var play = document.getElementById('play');
+    var pause = document.getElementById('pause');
+
+    // associate functions with the 'onclick' events
+    play.onclick = playAudio;
+    pause.onclick = pauseAudio;
+
+    function playAudio() {
+        myAudio.play();
+    }
+
+    function pauseAudio() {
+        myAudio.pause();
+    }
+
+}
