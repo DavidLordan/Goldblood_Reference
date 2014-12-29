@@ -261,39 +261,26 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
     };//End swap() function.
 
-
-
     $scope.togglePlayback = function () {
         var myAudio = document.getElementById('my-audio');
 
         if ($scope.audioActive !== "") {
 
-
-
-
             if ($scope.playing) {
                 $scope.playing = false;
                 $scope.playbackIcon = "Resources/playIcon.png";
                 myAudio.pause();
-                console.log("yo");
+               
             }
             else {
                 $scope.playing = true;
                 $scope.playbackIcon = "Resources/pauseIcon.png";
                 myAudio.play();
-                console.log("lo");
+                
             }
 
-
-
-
-
         }
-
-
-
-
-
+        
     };
 
 
@@ -356,19 +343,22 @@ assign9.filter("timeFilter", function () {
 window.onload = function () {
 
     var myAudio = document.getElementById('my-audio');
-    var play = document.getElementById('play');
-    var pause = document.getElementById('pause');
+    var bar = document.getElementById('bar');
 
-    // associate functions with the 'onclick' events
-    play.onclick = playAudio;
-    pause.onclick = pauseAudio;
+    myAudio.addEventListener('timeupdate', function () {
+        //sets the percentage
+        bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+    });
 
-    function playAudio() {
-        myAudio.play();
-    }
+    var progress = document.getElementById('progress');
 
-    function pauseAudio() {
-        myAudio.pause();
-    }
+    progress.addEventListener('click', function (e) {
 
-}
+        // calculate the normalized position clicked
+        var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
+        var clickTime = clickPosition * myAudio.duration;
+
+        // move the playhead to the correct position
+        myAudio.currentTime = clickTime;
+    });
+};

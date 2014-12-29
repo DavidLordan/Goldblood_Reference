@@ -75,13 +75,23 @@
         <!-- Table which contains the playlist. The table is hidden if no songs have been added.-->
         <div id="setlist">
 
+
+
+
             <!-- Div used to contain the up and down arrows, swap button and total length.-->
             <div id="interaction">
-                <audio ng-src="{{audioActive|audioFilter}}" id="my-audio"></audio>
+                <audio id="my-audio" ng-src="{{audioActive|audioFilter}}">
+                    
+                </audio>
+
+
+
                 <div id="controls">
                     <!-- custom play and pause buttons -->
                     <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
                 </div>
+
+
             </div><!-- End interaction div-->
 
 
@@ -92,7 +102,10 @@
 
                     <th id="numHeader">#</th>
                     <th id="songHeader">SONG</th>
+
+                    <!--
                     <th>DL</th>
+                    -->
 
                 </tr>
 
@@ -112,13 +125,22 @@
                     <td class="songRow">
                         <a href="" ng-click="updateActive(i)">{{i.name}}</a>
                     </td>
-                    
+
+
+
+                    <!--
                     <td>
                         <a ng-href="http://davidlordan.github.io/Goldblood_Reference/{{i.name|audioFilter}}" target="_blank" download>DL</a>
                     </td>
+                    -->
                 </tr>
 
             </table><!-- End of play list table.-->
+
+
+            <div id="progress">
+                <div id="bar"></div>
+            </div>
 
         </div><!-- End setlist div.-->
 

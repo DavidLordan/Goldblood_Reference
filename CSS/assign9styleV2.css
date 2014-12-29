@@ -186,7 +186,7 @@ a{
 
 #setlist .move{
     background-color:#000000;
-    
+
 }
 
 
@@ -208,7 +208,7 @@ a{
    buttons, the swap button, as well as the total time display. */
 
 #controls input{
-    
+
     border-style: solid;
     border-color: white;
     border-radius: 25px;
@@ -268,7 +268,7 @@ audio{
     border-color:white;
     border-radius: 35px;
     background-color: black;
-    
+
 
     margin-top: 10px;
 
@@ -340,7 +340,7 @@ audio{
         text-align: center;
         font-size: .8em;
     }
-    
+
 } 
 
 
@@ -370,4 +370,40 @@ audio{
     border-left-style: solid;
     border-left-color: white;
     border-left-width: 1px;
+}
+
+
+#control {
+    width: 80px;
+    float: left;
+}
+
+#progress {
+    margin-left: 80px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#bar {
+    height: 20px;
+    background-color: green;
+    width: 0;
+}
+
+
+#control {
+    width: 80px;
+    float: left;
+}
+
+#progres {
+    margin-left: 80px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#ba {
+    height: 20px;
+    background-color: green;
+    width: 0;
 }
