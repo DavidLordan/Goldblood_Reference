@@ -92,6 +92,7 @@
 
                     <th id="numHeader">#</th>
                     <th id="songHeader">SONG</th>
+                    <th>DL</th>
 
                 </tr>
 
@@ -110,6 +111,10 @@
                          When the song names are clicked the 'setSwapClass' function is called.-->
                     <td class="songRow">
                         <a href="" ng-click="updateActive(i)">{{i.name}}</a>
+                    </td>
+                    
+                    <td>
+                        <a ng-href="http://davidlordan.github.io/Goldblood_Reference/{{i.name|audioFilter}}" target="_blank" download>DL</a>
                     </td>
                 </tr>
 
