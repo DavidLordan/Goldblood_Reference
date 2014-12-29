@@ -211,10 +211,13 @@ a{
 
     border-style: solid;
     border-color: white;
-    border-radius: 25px;
+    border-radius: 35px;
+    border-width: 0px;
     background-color: black;
-    padding:5px;
+   
     margin-bottom: 8px;
+    width: 23%;
+    
 }
 
 #interaction{
