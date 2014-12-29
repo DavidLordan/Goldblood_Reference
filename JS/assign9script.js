@@ -344,10 +344,12 @@ window.onload = function () {
 
     var myAudio = document.getElementById('my-audio');
     var bar = document.getElementById('bar');
+    var ball = document.getElementById('circle1');
 
     myAudio.addEventListener('timeupdate', function () {
         //sets the percentage
         bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+      //  ball.style.left = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
     });
 
     var progress = document.getElementById('progress');
@@ -360,5 +362,8 @@ window.onload = function () {
 
         // move the playhead to the correct position
         myAudio.currentTime = clickTime;
+       // ball.style.left = 23+parseInt(clickTime);
+        console.log(ball);
     });
 };
+

@@ -297,6 +297,50 @@ audio{
 
 }
 
+
+#progress {
+    margin: 0px 10px 10px 10px;
+    border: 3px solid #aaaaaa;
+    border-radius: 13px;
+    cursor: pointer;
+    background-color: black;
+
+
+}
+
+#bar {
+    height: 20px;
+    background-color: #33ffcc;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 98%;
+}
+
+#circle2{
+    width:20px;
+    height:20px;
+    border-radius:50px;
+    line-height:100px;
+    text-align:center;
+    background:#33ffcc;
+    position: absolute;
+}
+
+#circle1{
+    width:20px;
+    height:20px;
+    border-radius:50px;
+    line-height:100px;
+    text-align:center;
+    background:#00ff00;
+    position: absolute;
+    left: 23px;
+}
+
+
 @media only screen and (max-width: 1024px) {
     body{
         width:415px;
@@ -313,6 +357,12 @@ audio{
         border-width: 1px;
         padding:0px;
     }
+
+    #bar {
+        max-width: 96.5%;
+    }
+
+
     #setlist, #songTable{
         display:inline-block;
         position: relative;
@@ -373,37 +423,8 @@ audio{
 }
 
 
-#control {
-    width: 80px;
-    float: left;
-}
-
-#progress {
-    margin-left: 80px;
-    border: 1px solid black;
-    cursor: pointer;
-}
-
-#bar {
-    height: 20px;
-    background-color: green;
-    width: 0;
-}
 
 
-#control {
-    width: 80px;
-    float: left;
-}
 
-#progres {
-    margin-left: 80px;
-    border: 1px solid black;
-    cursor: pointer;
-}
 
-#ba {
-    height: 20px;
-    background-color: green;
-    width: 0;
-}
+
