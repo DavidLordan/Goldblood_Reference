@@ -43,6 +43,8 @@ var assign9 = angular.module('assign9', []);
 //  The total length of the setlist.
 var total = 0;
 
+var ballOffset = 23;
+
 // An array of the two songs which are currently swappable. 
 var selected = [];
 
@@ -240,12 +242,33 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
 
+
+
+
+
+
+        myAudio = document.getElementById('my-audio');
+
         $scope.playbackIcon = "Resources/playIcon.png";
-        //$scope.$apply();
 
-        $scope.togglePlayback();
-        this.currentTime = 0;
+        myAudio.pause();
+        $scope.playing = false;
 
+
+
+        if (myAudio.currentTime !== 0) {
+
+            myAudio.currentTime = 0;
+
+            var bar = document.getElementById('bar');
+            bar.style.width = 0;
+
+            $("#circle1").css({'left': ballOffset + 'px'});
+
+
+        }
+
+        console.log(myAudio.currentTime);
 
         if ($scope.moveActive !== i) {
             $scope.moveActive = i;
@@ -313,7 +336,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var bar = document.getElementById('bar');
         var ball = document.getElementById('circle1');
         var playerScale = 255;
-        var ballOffset = 23;
+
         var ballLeft = 0;
 
 
@@ -365,7 +388,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         });
         myAudio.addEventListener('timeupdate', function () {
-            //sets the percentage
+            console.log("update");
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
 
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
@@ -388,6 +411,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
             ballLeft = playerScale * ballLeft + ballOffset;
             $(ball).css({'left': ballLeft + 'px'});
+
+
 
 
 
