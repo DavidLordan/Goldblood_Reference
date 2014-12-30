@@ -51,25 +51,20 @@ var selected = [];
 //AngularJS controller. 
 assign9.controller("assign9Ctrl", function ($scope, $http) {
 
-    //Fetches the song list, stored in a JSON file, via AJAX
+//Fetches the song list, stored in a JSON file, via AJAX
     $http.get('JSON/GB_songs.json').success(function (data) {
 
         $scope.myList = data;
     });
-
     // An array of the list of song currently in the setlit. 
     // $scope.myList = [];
 
     // The next position of the song to be added. Also used to determine the number of songs
     // in the list. 
     $scope.nextPos = 0;
-
     $scope.playing = false;
-
     $scope.playbackIcon = "Resources/playIcon.png";
-
     $scope.audioActive = "";
-
     /**
      * Function to ammend the set list by adding or removing a song.
      * @param {JSON object} newSong - The new song to be added and its information.
@@ -83,17 +78,14 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             //Increments the song counter and uses the value to set the new song's position.
             $scope.nextPos++;
             newSong.pos = $scope.nextPos;
-
             // Adds the new song to the setlist
             $scope.myList.push(newSong);
-
             // As the song lengths are not stord in a easy to interpret format, some
             // parsing must be done. Song lenghts are converted total seconds and added to the total time. 
             var str = newSong.Length.toString();
             var front = str.substring(0, str.length - 2);
             str = str.substring(str.length - 2, str.length);
             total = total + front * 60 + parseInt(str);
-
             $scope.totalTime = total;
         }
         // Song is being removed.
@@ -106,7 +98,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             // Decrements the song counter and saves the index of the song to be deleated.
             $scope.nextPos--;
             var index = $scope.myList.indexOf(newSong);
-
             // If a swappable song is removed, it is removed from the swappable array.
             for (var i = 0; i < selected.length; i++) {
                 if (newSong === selected[i]) {
@@ -121,9 +112,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             var front = str.substring(0, str.length - 2);
             str = str.substring(str.length - 2, str.length);
             total = total - front * 60 - parseInt(str);
-
             $scope.totalTime = total;
-
             // Ensures that the other song's positions are properly realigned to reflect
             // the change. 
             for (var i = 0; i < $scope.myList.length; i++) {
@@ -132,7 +121,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 }
             }
         }
-    };//End change() function.
+    }; //End change() function.
 
     // Function what allows the 'moveActive' song to be moved up the setlist. 
     $scope.moveUp = function () {
@@ -140,10 +129,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         // Ensures that there is an active song and clears any error messages.
         if ($scope.moveActive) {
             $scope.error = "";
-
             // Index of song above song being moved. 
             var posToSave;
-
             // Ensures that the highest song in the order is not being moved up. 
             if ($scope.moveActive.pos !== 1) {
 
@@ -168,7 +155,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         else {
             $scope.error = "Use a radio button to select a song to move.";
         }
-    };//End moveUp() function.
+    }; //End moveUp() function.
 
 
     //Function to move a song down the setlist. This is essentially the same algorithm of
@@ -177,9 +164,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         if ($scope.moveActive) {
             $scope.error = "";
-
             var posToSave;
-
             if ($scope.moveActive.pos !== $scope.myList.length) {
 
                 for (var i = 0; i < $scope.myList.length; i++) {
@@ -193,7 +178,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         } else {
             $scope.error = "Use a radio button to select a song to move.";
         }
-    };//End moveDown() function.
+    }; //End moveDown() function.
 
 
     //Function that sets selected songs to be swappable. Only two songs may be swappable
@@ -203,7 +188,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         //Clears any error messages if a user tries to select a song.
         $scope.error = "";
         var retVal;
-
         //If the current song is already active, it is removed from the selected array and
         // it's active class is removed.
         if (currentClass === "active") {
@@ -236,44 +220,26 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         //Returns the new class for to selected song.
         return retVal;
-
-    };//End setSwapClass() function
+    }; //End setSwapClass() function
 
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
 
-
-
-
-
-
         myAudio = document.getElementById('my-audio');
-
         $scope.playbackIcon = "Resources/playIcon.png";
-
         myAudio.pause();
         $scope.playing = false;
-
-
-
         if (myAudio.currentTime !== 0) {
 
             myAudio.currentTime = 0;
-
             var bar = document.getElementById('bar');
             bar.style.width = 0;
-
             $("#circle1").css({'left': ballOffset + 'px'});
-
-
         }
-
-        console.log(myAudio.currentTime);
 
         if ($scope.moveActive !== i) {
             $scope.moveActive = i;
             $scope.audioActive = $scope.moveActive.name;
-            console.log($scope.audioActive);
         }
         else {
             $scope.moveActive = "";
@@ -281,7 +247,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
 
     };
-
     // If there are two swappable songs, a simple swap algorithm is used to trade their
     // positions. 
     $scope.swap = function () {
@@ -295,34 +260,55 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         else {
             $scope.error = "Please select up to 2 songs to swap.";
         }
-    };//End swap() function.
+    }; //End swap() function.
 
     $scope.togglePlayback = function () {
 
         //console.log("woah");
         var myAudio = document.getElementById('my-audio');
-
         if ($scope.audioActive !== "") {
 
             if ($scope.playing) {
                 $scope.playing = false;
-                console.log("yes");
                 $scope.playbackIcon = "Resources/playIcon.png";
                 //$scope.$apply();
                 myAudio.pause();
-
             }
             else {
-                console.log("no");
+
                 $scope.playing = true;
                 $scope.playbackIcon = "Resources/pauseIcon.png";
-
                 myAudio.play();
-
             }
 
         }
 
+    };
+
+
+
+    //Loads the finished list of songs
+    $scope.finishedList = function () {
+
+        //Fetches the song list, stored in a JSON file, via AJAX
+        $http.get('JSON/GB_songs.json').success(function (data) {
+
+            $scope.myList = data;
+        });
+
+    };
+
+
+
+    //Loads the unfinished list of songs
+    $scope.unfinishedList = function () {
+
+
+//Fetches the song list, stored in a JSON file, via AJAX
+        $http.get('JSON/GB_ideas.json').success(function (data) {
+
+            $scope.myList = data;
+        });
     };
 
 
@@ -336,19 +322,15 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var bar = document.getElementById('bar');
         var ball = document.getElementById('circle1');
         var playerScale = 259;
-
         var ballLeft = 0;
-
-
-
+        
+        
         if ($(window).width() > 1024) {
             playerScale = 465;
             ballOffset = 18;
-            console.log("duuude");
         } else {
             playerScale = 259;
             ballOffset = 23;
-
         }
 
 
@@ -364,63 +346,42 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             } else {
                 playerScale = 255;
                 ballOffset = 23;
-
-
             }
 
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
             ballLeft = playerScale * ballLeft + ballOffset;
             $(ball).css({'left': ballLeft + 'px'});
-
-
+            
         });
-
-
         $(ball).css({'left': ballOffset + 'px'});
-
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
             $scope.$apply();
-
             $scope.togglePlayback();
             this.currentTime = 0;
-
-
         });
         myAudio.addEventListener('timeupdate', function () {
             console.log("update");
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
             ballLeft = playerScale * ballLeft + ballOffset;
             $(ball).css({'left': ballLeft + 'px'});
-
         });
-
         var progress = document.getElementById('progress');
-
         progress.addEventListener('click', function (e) {
 
             // calculate the normalized position clicked
             var clickPosition = (e.pageX - this.offsetLeft - 15) / this.offsetWidth;
             var clickTime = (clickPosition * myAudio.duration);
-
             // move the playhead to the correct position
             myAudio.currentTime = clickTime;
-
+            bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
             ballLeft = playerScale * ballLeft + ballOffset;
             $(ball).css({'left': ballLeft + 'px'});
-
-
-
-
-
         });
     };
-
-
-});//End assign9.controller
+}); //End assign9.controller
 
 
 
@@ -447,20 +408,15 @@ assign9.filter("lengthFilter", function () {
         var front = str.substring(0, str.length - 2);
         str = str.substring(str.length - 2, str.length);
         return front + ":" + str;
-
     };
 });
-
-
 assign9.filter("audioFilter", function () {
 
     return function (i) {
 
         return "Audio/ " + i + ".mp3";
     };
-
 });
-
 // Another custom filter that calulates the total time. As the total time is saved in
 // seconds, a short algorithm is used to calculate the total hours, minutes and remaining
 // seconds. Again, this soft of filter is likley to be bulit in to Angular, but it seemed
@@ -470,7 +426,6 @@ assign9.filter("timeFilter", function () {
 
         var seconds = time % 60;
         var minutes = (time - seconds) / 60;
-
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
