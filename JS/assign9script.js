@@ -65,6 +65,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.playing = false;
     $scope.playbackIcon = "Resources/playIcon.png";
     $scope.audioActive = "";
+    $scope.nowPlaying = "";
     /**
      * Function to ammend the set list by adding or removing a song.
      * @param {JSON object} newSong - The new song to be added and its information.
@@ -225,6 +226,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
 
+        $scope.nowPlaying = "";
         myAudio = document.getElementById('my-audio');
         $scope.playbackIcon = "Resources/playIcon.png";
         myAudio.pause();
@@ -244,6 +246,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         else {
             $scope.moveActive = "";
             $scope.audioActive = "";
+
         }
 
     };
@@ -264,6 +267,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     $scope.togglePlayback = function () {
 
+       // $scope.nowPlaying = "Playing: \"" + $scope.audioActive + ".mp3\"";
         //console.log("woah");
         var myAudio = document.getElementById('my-audio');
         if ($scope.audioActive !== "") {
@@ -275,7 +279,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 myAudio.pause();
             }
             else {
-
+                $scope.nowPlaying = "Playing: \"" + $scope.audioActive + ".mp3\"";
                 $scope.playing = true;
                 $scope.playbackIcon = "Resources/pauseIcon.png";
                 myAudio.play();
@@ -289,6 +293,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //Loads the finished list of songs
     $scope.finishedList = function () {
+
 
         //Fetches the song list, stored in a JSON file, via AJAX
         $http.get('JSON/GB_songs.json').success(function (data) {
@@ -304,7 +309,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.unfinishedList = function () {
 
 
-//Fetches the song list, stored in a JSON file, via AJAX
+        //Fetches the song list, stored in a JSON file, via AJAX
         $http.get('JSON/GB_ideas.json').success(function (data) {
 
             $scope.myList = data;
@@ -323,8 +328,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var ball = document.getElementById('circle1');
         var playerScale = 259;
         var ballLeft = 0;
-        
-        
+
+
         if ($(window).width() > 1024) {
             playerScale = 465;
             ballOffset = 18;
@@ -351,13 +356,16 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
             ballLeft = playerScale * ballLeft + ballOffset;
             $(ball).css({'left': ballLeft + 'px'});
-            
+
         });
         $(ball).css({'left': ballOffset + 'px'});
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
+            $scope.nowPlaying = "";
             $scope.$apply();
             $scope.togglePlayback();
+            
+            console.log($scope.nowPlaying);
             this.currentTime = 0;
         });
         myAudio.addEventListener('timeupdate', function () {

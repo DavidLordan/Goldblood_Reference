@@ -357,6 +357,10 @@ audio{
     body{
         width:415px;
     }
+    
+    #nowPlaying{
+        font-size: .7em;
+    }
     audio{
         width: 275px;
         height: 30px;
@@ -438,8 +442,20 @@ audio{
     border-left-width: 1px;
 }
 
+#sublist input{
+   font-family: 'Open Sans', sans-serif;
+    height: 30px;
+    margin:5px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+}
 
-
+#sublist input:active {
+    background-color: #33ffcc;
+}
 
 
 

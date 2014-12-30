@@ -93,6 +93,7 @@
                 <div id="controls">
                     <!-- custom play and pause buttons -->
                     <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
+                    <div id="nowPlaying">&nbsp{{nowPlaying}}&nbsp</div>
                 </div>
 
 
@@ -103,7 +104,7 @@
                 </div><!-- End progress bar-->
 
 
-                <div id="songlist">
+                <div id="sublist">
                     <input type="button" value="Finished Songs" ng-click="finishedList()"/>
                     <input type="button" value="Incomplete Songs/Ideas" ng-click="unfinishedList()"/>
                 </div>
