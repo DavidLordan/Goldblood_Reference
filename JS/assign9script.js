@@ -335,7 +335,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var myAudio = document.getElementById('my-audio');
         var bar = document.getElementById('bar');
         var ball = document.getElementById('circle1');
-        var playerScale = 285;
+        var playerScale = 259;
 
         var ballLeft = 0;
 
@@ -346,7 +346,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             ballOffset = 18;
             console.log("duuude");
         } else {
-            playerScale = 285;
+            playerScale = 259;
             ballOffset = 23;
 
         }
