@@ -52,6 +52,7 @@
         <!-- External Javascript file containing custom functions and the AngularJS 
              model and controller that allow the page to function.-->
         <script src="JS/assign9script.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
         <!-- Link to CSS file used to stylize the page.-->
         <link href="CSS/assign9styleV2.css" rel="stylesheet" type="text/css"> 
@@ -63,7 +64,7 @@
 
 
     <!-- Directive which says this page will use the assign9Ctrl ng-controller. -->
-    <body ng-controller="assign9Ctrl">
+    <body ng-controller="assign9Ctrl" ng-init='load()'>
 
         <!-- Container for an introduction and instructions to the user.-->
         <div class="Intro">
@@ -97,7 +98,7 @@
 
                 <div id="progress">
                     <div id="circle2"></div>
-                   
+                    <div id="circle1"></div>
 
                     <div id="bar"></div>
 

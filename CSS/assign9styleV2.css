@@ -211,13 +211,13 @@ a{
 
     border-style: solid;
     border-color: white;
-    border-radius: 35px;
+    border-radius: 55px;
     border-width: 0px;
     background-color: black;
-   
+
     margin-bottom: 8px;
     width: 23%;
-    
+
 }
 
 #interaction{
@@ -303,44 +303,53 @@ audio{
 
 #progress {
     margin: 0px 10px 10px 10px;
-    border: 3px solid #aaaaaa;
+    border: 3px solid black;
     border-radius: 13px;
     cursor: pointer;
-    background-color: black;
+    background-color: #cccccc;
 
 
 }
 
 #bar {
-    height: 20px;
-    background-color: #33ffcc;
+    height: 15px;
+    background-color: #6600cc;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     width: 0;
+    border-width: 2px;
+    border-color: red;
     margin-left: 10px;
     margin-right: 10px;
     max-width: 98%;
 }
 
 #circle2{
-    width:20px;
-    height:20px;
+    width:17px;
+    height:15px;
     border-radius:50px;
     line-height:100px;
     text-align:center;
-    background:#33ffcc;
+    background:#6600cc;
     position: absolute;
+    
 }
 
 #circle1{
-    width:20px;
-    height:20px;
+    width:17px;
+    height:15px;
     border-radius:50px;
     line-height:100px;
     text-align:center;
-    background:#00ff00;
+    background:white;
     position: absolute;
     left: 23px;
+     -moz-box-sizing:    border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
 }
 
 
@@ -407,9 +416,13 @@ audio{
 }
 
 .move td{
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
     border-style: solid;
     border-color: red;
     border-width: 1px;
+
 }
 
 #numHeader{

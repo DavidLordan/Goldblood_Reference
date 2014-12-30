@@ -239,10 +239,23 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
-        $scope.moveActive = i;
-        $scope.audioActive = $scope.moveActive.name;
-        console.log($scope.audioActive);
 
+        $scope.playbackIcon = "Resources/playIcon.png";
+        //$scope.$apply();
+
+        $scope.togglePlayback();
+        this.currentTime = 0;
+
+
+        if ($scope.moveActive !== i) {
+            $scope.moveActive = i;
+            $scope.audioActive = $scope.moveActive.name;
+            console.log($scope.audioActive);
+        }
+        else {
+            $scope.moveActive = "";
+            $scope.audioActive = "";
+        }
 
     };
 
@@ -262,29 +275,140 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     };//End swap() function.
 
     $scope.togglePlayback = function () {
+
+        //console.log("woah");
         var myAudio = document.getElementById('my-audio');
 
         if ($scope.audioActive !== "") {
 
             if ($scope.playing) {
                 $scope.playing = false;
+                console.log("yes");
                 $scope.playbackIcon = "Resources/playIcon.png";
+                //$scope.$apply();
                 myAudio.pause();
-               
+
             }
             else {
+                console.log("no");
                 $scope.playing = true;
                 $scope.playbackIcon = "Resources/pauseIcon.png";
+
                 myAudio.play();
-                
+
             }
 
         }
-        
+
+    };
+
+
+
+
+
+
+    $scope.load = function () {
+
+        var myAudio = document.getElementById('my-audio');
+        var bar = document.getElementById('bar');
+        var ball = document.getElementById('circle1');
+        var playerScale = 255;
+        var ballOffset = 23;
+        var ballLeft = 0;
+
+
+
+        if ($(window).width() > 1024) {
+            playerScale = 465;
+            ballOffset = 18;
+            console.log("duuude");
+        } else {
+            playerScale = 255;
+            ballOffset = 23;
+
+        }
+
+
+
+        window.addEventListener("resize", function () {
+
+
+
+            if ($(window).width() > 1024) {
+                playerScale = 465;
+                ballOffset = 18;
+                console.log("duuude");
+            } else {
+                playerScale = 255;
+                ballOffset = 23;
+
+
+            }
+
+            ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
+            ballLeft = playerScale * ballLeft + ballOffset;
+            $(ball).css({'left': ballLeft + 'px'});
+
+
+        });
+
+
+        $(ball).css({'left': ballOffset + 'px'});
+
+        myAudio.addEventListener("ended", function () {
+            $scope.playbackIcon = "Resources/playIcon.png";
+            $scope.$apply();
+
+            $scope.togglePlayback();
+            this.currentTime = 0;
+
+
+        });
+        myAudio.addEventListener('timeupdate', function () {
+            //sets the percentage
+            bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+
+            ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
+            ballLeft = playerScale * ballLeft + ballOffset;
+            $(ball).css({'left': ballLeft + 'px'});
+
+        });
+
+        var progress = document.getElementById('progress');
+
+        progress.addEventListener('click', function (e) {
+
+            // calculate the normalized position clicked
+            var clickPosition = (e.pageX - this.offsetLeft - 15) / this.offsetWidth;
+            var clickTime = (clickPosition * myAudio.duration);
+
+            // move the playhead to the correct position
+            myAudio.currentTime = clickTime;
+
+            ballLeft = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) / 100;
+            ballLeft = playerScale * ballLeft + ballOffset;
+            $(ball).css({'left': ballLeft + 'px'});
+
+
+
+        });
     };
 
 
 });//End assign9.controller
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Custom filter for the song lengths. As these are not stored as strings, the colon
@@ -338,32 +462,4 @@ assign9.filter("timeFilter", function () {
         }
     };
 });
-
-
-window.onload = function () {
-
-    var myAudio = document.getElementById('my-audio');
-    var bar = document.getElementById('bar');
-    var ball = document.getElementById('circle1');
-
-    myAudio.addEventListener('timeupdate', function () {
-        //sets the percentage
-        bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-      //  ball.style.left = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-    });
-
-    var progress = document.getElementById('progress');
-
-    progress.addEventListener('click', function (e) {
-
-        // calculate the normalized position clicked
-        var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
-        var clickTime = clickPosition * myAudio.duration;
-
-        // move the playhead to the correct position
-        myAudio.currentTime = clickTime;
-       // ball.style.left = 23+parseInt(clickTime);
-        console.log(ball);
-    });
-};
 
