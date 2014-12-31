@@ -7,15 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
-
-
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-        </script>
-
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js">
-        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         <!-- Link to load the AngularJS framework.-->
         <script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js></script>
@@ -24,19 +18,16 @@
              model and controller that allow the page to function.-->
         <script src="JS/assign9script.js"></script>
 
-
         <!-- Link to CSS file used to stylize the page.-->
         <link href="CSS/assign9styleV3.css" rel="stylesheet" type="text/css"> 
 
-
-
-
     </head>
-
 
     <!-- Directive which says this page will use the assign9Ctrl ng-controller. -->
     <body ng-controller="assign9Ctrl" ng-init='load()'>
-        <div class="container">
+        
+        <div class="container">    
+            
             <!-- Container for an introduction and instructions to the user.-->
             <div class="Intro">
                 <h1>Goldblood Songs</h1>
@@ -63,19 +54,18 @@
                 <div id="interaction">
                     <audio id="my-audio" ng-src="{{audioActive|audioFilter}}"></audio>
 
-
                     <div id="controls">
                         <!-- custom play and pause buttons -->
                         <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
+                        
                         <div id="nowPlaying">
+                            
                             <span id="timeSpent">{{timeSpent| number:0|timeFilter}}</span>
                             <span>&nbsp;{{nowPlaying}}&nbsp;</span>
                             <span id="timeRemaining">-{{timeRemaining| number:0 |timeFilter}}</span>
                         
-                        
                         </div>
                     </div>
-
 
                     <div id="progress">
                         <span id="circle2"></span>
@@ -112,8 +102,6 @@
                 </div>
             </div><!-- End setlist div.-->
         </div><!-- End container -->
-
-
 
     </body>
 

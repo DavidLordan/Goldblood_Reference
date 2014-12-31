@@ -51,10 +51,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 //Fetches the song list, stored in a JSON file, via AJAX
     $http.get('JSON/GB_songs.json').success(function (data) {
-
         $scope.myList = data;
     });
-    
+
     // The next position of the song to be added. Also used to determine the number of songs
     // in the list. 
     $scope.nextPos = 0;
@@ -62,53 +61,60 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.playbackIcon = "Resources/playIcon.png";
     $scope.audioActive = "";
     $scope.nowPlaying = "";
-    $scope.currentSongList = "";
+    $scope.currentSongList = "GB_songs";
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
-    
+
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
 
-        $scope.nowPlaying = "";
-        myAudio = document.getElementById('my-audio');
-        $scope.playbackIcon = "Resources/playIcon.png";
-        myAudio.pause();
-        $scope.playing = false;
-        
-        if (myAudio.currentTime !== 0) {
+        if ($scope.currentSongList === "GB_ideas" || $scope.currentSongList === "GB_songs") {
 
-            myAudio.currentTime = 0;
-            var bar = document.getElementById('bar');
-            bar.style.width = 0;
-            
+            $scope.nowPlaying = "";
+            myAudio = document.getElementById('my-audio');
+            $scope.playbackIcon = "Resources/playIcon.png";
+            myAudio.pause();
+            $scope.playing = false;
+
+            if (myAudio.currentTime !== 0) {
+
+                myAudio.currentTime = 0;
+                var bar = document.getElementById('bar');
+                bar.style.width = 0;
+
+            }
+
+            if ($scope.moveActive !== i) {
+                $scope.moveActive = i;
+                $scope.audioActive = $scope.moveActive.name;
+            }
+            else {
+                $scope.moveActive = "";
+                $scope.audioActive = "";
+            }
         }
 
-        if ($scope.moveActive !== i) {
-            $scope.moveActive = i;
-            $scope.audioActive = $scope.moveActive.name;
+        if ($scope.currentSongList === "GB_Notation") {
+            document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Resources/" + i.name + ".pdf";
         }
-        else {
-            $scope.moveActive = "";
-            $scope.audioActive = "";
-        }
+        if ($scope.currentSongList === "GB_Downloads") {
 
-        if ($scope.currentListName === "GB_Notation") {
-            console.log("dude");
+            // document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Audio/%20" + i.name + ".mp3";
 
         }
 
     };
-    
+
     //Adjusts playback icon
     $scope.togglePlayback = function () {
 
         var myAudio = document.getElementById('my-audio');
-        
+
         if ($scope.audioActive !== "") {
 
             if ($scope.playing) {
                 $scope.playing = false;
-                $scope.playbackIcon = "Resources/playIcon.png";       
+                $scope.playbackIcon = "Resources/playIcon.png";
                 myAudio.pause();
             }
             else {
@@ -122,7 +128,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //Loads the finished list of songs
     $scope.changeList = function (listName) {
-        $scope.currentListName = listName;
+        $scope.currentSongList = listName;
+
         //Fetches the song list, stored in a JSON file, via AJAX
         $http.get('JSON/' + listName + '.json').success(function (data) {
 
@@ -156,12 +163,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         var progress = document.getElementById('progress');
         progress.addEventListener('click', function (e) {
-            
-            var testerooni ="dude";
+
+            var testerooni = "dude";
             testerooni = $("#bar").css("right");
             console.log(testerooni);
-            
-            
+
+
 
             // calculate the normalized position clicked
             var clickPosition = (e.pageX - this.offsetLeft - 15) / this.offsetWidth;
@@ -173,15 +180,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
     };
 }); //End assign9.controller
-
-
-
-
-
-
-
-
-
 
 
 
@@ -214,8 +212,8 @@ assign9.filter("audioFilter", function () {
 // like a good thing to practice. 
 assign9.filter("timeFilter", function () {
     return function (time) {
-        
-        
+
+
         var seconds = time % 60;
         var minutes = (time - seconds) / 60;
         if (seconds < 10) {
@@ -230,7 +228,7 @@ assign9.filter("timeFilter", function () {
             }
             return hours + "h, " + minutes + "m, " + seconds + "s";
         } else {
-            return minutes + ":" + seconds ;
+            return minutes + ":" + seconds;
         }
     };
 });
