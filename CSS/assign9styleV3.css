@@ -249,6 +249,16 @@ button{
 
 @media only screen and (max-width: 500px){
     body{
-        font-size: .8em;
+        font-size: .9em;
     }
+    
+    
+    #setlist table td{
+        padding:2px;
+    }
+    
+    #tableDiv{
+        width: 90%;
+    }
+    
 }
