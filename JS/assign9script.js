@@ -148,14 +148,20 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         myAudio.addEventListener('timeupdate', function () {
 
-            $scope.timeSpent = myAudio.currentTime;
-            $scope.timeRemaining = myAudio.duration - myAudio.currentTime;
+            $scope.timeSpent = Math.floor(myAudio.currentTime);
+            $scope.timeRemaining = Math.floor(myAudio.duration) - Math.floor(myAudio.currentTime);
             $scope.$apply();
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
 
         });
         var progress = document.getElementById('progress');
         progress.addEventListener('click', function (e) {
+            
+            var testerooni ="dude";
+            testerooni = $("#bar").css("right");
+            console.log(testerooni);
+            
+            
 
             // calculate the normalized position clicked
             var clickPosition = (e.pageX - this.offsetLeft - 15) / this.offsetWidth;
