@@ -174,12 +174,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $scope.timeSpent = Math.floor(myAudio.currentTime);
             $scope.timeRemaining = Math.floor(myAudio.duration) - Math.floor(myAudio.currentTime);
             $scope.$apply();
-            if(!playheadClicked){
-            bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-        }
+            if (!playheadClicked) {
+                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+            }
 
         });
         var progress = document.getElementById('progress');
+
         progress.addEventListener('click', function (e) {
 
             // calculate the normalized position clicked
@@ -195,11 +196,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
                 var mousePos = Math.floor(e.pageX);
-                
+
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
 
             }
         });
+
         progress.addEventListener('mousedown', function (e) {
             var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
             var p = $("#circle1");
@@ -211,15 +213,36 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         window.addEventListener('mouseup', function (e) {
-            playheadClicked = false;
-            var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
-            var clickTime = (clickPosition * myAudio.duration);
-            myAudio.currentTime = clickTime;
+            if (playheadClicked) {
+                //  console.log("up");
+                playheadClicked = false;
+                var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = clickTime;
+            }
         });
 
-    };
-}); //End assign9.controller
 
+
+
+    };
+
+
+    var keyValid = true;
+    $(document).on('keydown', function (e) {
+        if (e.key === " " && keyValid) {
+            keyValid = false;
+            $scope.togglePlayback();
+            e.preventDefault();
+        }
+    });
+
+    $(document).on('keyup', function (e) {
+        keyValid = true;
+    });
+
+}); //End assign9.controller
 
 
 
