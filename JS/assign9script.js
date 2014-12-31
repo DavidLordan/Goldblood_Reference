@@ -226,6 +226,41 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
 
+
+        $(document).bind('touchmove', function (e){
+            if (playheadClicked) {
+                //console.log(Math.floor(e.pageX)); 
+                var mousePos = Math.floor(e.pageX);
+
+                bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+
+            }
+        });
+
+        progress.addEventListener('touchstart', function (e) {
+            var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
+            var p = $("#circle1");
+            var position = p.position().left;
+            if (Math.abs(position - e.pageX) < 15) {
+                playheadClicked = true;
+            }
+
+        });
+
+        window.addEventListener('touchend', function (e) {
+            if (playheadClicked) {
+                //  console.log("up");
+                playheadClicked = false;
+                var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = clickTime;
+            }
+        });
+
+
+
+
     };
 
 
