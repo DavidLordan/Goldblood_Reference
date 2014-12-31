@@ -64,9 +64,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.currentSongList = "GB_songs";
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
+    $scope.tableName = "Finished Songs";
 
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
+
+
+
 
         if ($scope.currentSongList === "GB_ideas" || $scope.currentSongList === "GB_songs") {
 
@@ -97,11 +101,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         if ($scope.currentSongList === "GB_Notation") {
             window.open("http://davidlordan.github.io/Goldblood_Reference/Resources/" + i.name + ".pdf");
         }
-        if ($scope.currentSongList === "GB_Downloads") {
 
-            // document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Audio/%20" + i.name + ".mp3";
-
-        }
 
     };
 
@@ -132,7 +132,18 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //Loads the finished list of songs
     $scope.changeList = function (listName) {
+
         $scope.currentSongList = listName;
+
+        if (listName === "GB_songs") {
+            $scope.tableName = "Finished Songs";
+        }
+        if (listName === "GB_ideas") {
+            $scope.tableName = "Song Ideas";
+        }
+        if (listName === "GB_Notation") {
+            $scope.tableName = "Notes";
+        }
 
         //Fetches the song list, stored in a JSON file, via AJAX
         $http.get('JSON/' + listName + '.json').success(function (data) {
@@ -147,6 +158,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         var myAudio = document.getElementById('my-audio');
         var bar = document.getElementById('bar');
+        var playheadClicked = false;
 
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
@@ -162,26 +174,49 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $scope.timeSpent = Math.floor(myAudio.currentTime);
             $scope.timeRemaining = Math.floor(myAudio.duration) - Math.floor(myAudio.currentTime);
             $scope.$apply();
+            if(!playheadClicked){
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+        }
 
         });
         var progress = document.getElementById('progress');
         progress.addEventListener('click', function (e) {
 
-            var testerooni = "dude";
-            testerooni = $("#bar").css("right");
-            console.log(testerooni);
-
-
-
             // calculate the normalized position clicked
-            var clickPosition = (e.pageX - this.offsetLeft - 15) / this.offsetWidth;
+            var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
             var clickTime = (clickPosition * myAudio.duration);
             // move the playhead to the correct position
             myAudio.currentTime = clickTime;
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
 
         });
+
+        window.addEventListener('mousemove', function (e) {
+            if (playheadClicked) {
+                //console.log(Math.floor(e.pageX)); 
+                var mousePos = Math.floor(e.pageX);
+                
+                bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+
+            }
+        });
+        progress.addEventListener('mousedown', function (e) {
+            var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
+            var p = $("#circle1");
+            var position = p.position().left;
+            if (Math.abs(position - e.pageX) < 15) {
+                playheadClicked = true;
+            }
+
+        });
+
+        window.addEventListener('mouseup', function (e) {
+            playheadClicked = false;
+            var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
+            var clickTime = (clickPosition * myAudio.duration);
+            myAudio.currentTime = clickTime;
+        });
+
     };
 }); //End assign9.controller
 

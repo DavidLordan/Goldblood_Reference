@@ -25,9 +25,9 @@
 
     <!-- Directive which says this page will use the assign9Ctrl ng-controller. -->
     <body ng-controller="assign9Ctrl" ng-init='load()'>
-        
+
         <div class="container">    
-            
+
             <!-- Container for an introduction and instructions to the user.-->
             <div class="Intro">
                 <h1>Goldblood Songs</h1>
@@ -38,8 +38,8 @@
                     <div class="sublist">
                         <input type="button" class="btn-primary" value="Finished Songs" ng-click="changeList('GB_songs')"/>
                         <input type="button" class="btn-warning" value="Incomplete Songs/Ideas" ng-click="changeList('GB_ideas')"/>
-                   
-                        <input type="button" class="btn-danger" value="Notation/Tabs" ng-click="changeList('GB_Notation')"/>
+
+                        <input type="button" class="btn-danger" value="Notes" ng-click="changeList('GB_Notation')"/>
                         <input type="button" class="btn-success" value="Downloads" ng-click="download(s)"/>
                     </div>
                 </div>
@@ -57,13 +57,13 @@
                     <div id="controls">
                         <!-- custom play and pause buttons -->
                         <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
-                        
+
                         <div id="nowPlaying">
-                            
+
                             <span id="timeSpent">{{timeSpent| number:0|timeFilter}}</span>
                             <span>&nbsp;{{nowPlaying}}&nbsp;</span>
                             <span id="timeRemaining">-{{timeRemaining| number:0 |timeFilter}}</span>
-                        
+
                         </div>
                     </div>
 
@@ -77,16 +77,18 @@
                 </div><!-- End interaction div-->
 
 
+                
                 <div id="tableDiv">
+                    
                     <table>
                         <!-- Table headers for the playlist songs names and lengths.-->
                         <tr>
                             <th id="numHeader">#</th>
-                            <th id="songHeader">SONG</th>
+                            <th id="songHeader">{{tableName}}</th>
                         </tr>
 
 
-                        <tr ng-class="{move: i === moveActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
+                        <tr ng-class="{move: i.name === audioActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
 
                             <td>{{$index + 1}}</td>
                             <!-- The list of song names. Makes use of the ng-class attribute to add
