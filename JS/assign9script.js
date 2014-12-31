@@ -95,13 +95,18 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
 
         if ($scope.currentSongList === "GB_Notation") {
-            document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Resources/" + i.name + ".pdf";
+            window.open("http://davidlordan.github.io/Goldblood_Reference/Resources/" + i.name + ".pdf");
         }
         if ($scope.currentSongList === "GB_Downloads") {
 
             // document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Audio/%20" + i.name + ".mp3";
 
         }
+
+    };
+
+    $scope.download = function () {
+        document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Audio/GB_songs.zip";
 
     };
 
