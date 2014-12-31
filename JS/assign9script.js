@@ -106,8 +106,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     };
 
     $scope.download = function () {
-        document.location.href = "http://davidlordan.github.io/Goldblood_Reference/Audio/GB_songs.zip";
-
+        document.location.href = "https://github.com/DavidLordan/Goldblood_Reference/blob/gh-pages/Audio/GB_Songs.zip?raw=true";
     };
 
     //Adjusts playback icon
