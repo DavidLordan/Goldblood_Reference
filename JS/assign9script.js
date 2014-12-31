@@ -193,7 +193,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
         });
         
-
         window.addEventListener('mousemove', function (e) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
@@ -244,14 +243,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (Math.abs(position - e.pageX) < 15) {
                 playheadClicked = true;
             }
-            else{
-                var mousePos = Math.floor(e.pageX);
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-                myAudio.currentTime = Math.floor(clickTime);
-                alert("click");
-            }
-
+            
         });
 
         window.addEventListener('touchend', function (e) {
@@ -266,6 +258,15 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //myAudio.play();
                 playheadClicked = false;
             }
+        });
+        
+        progress.addEventListener('touchend', function (e){
+             var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = Math.floor(clickTime);
+                //alert(myAudio.currentTime +" "+clickTime);
+                //myAudio.play();
         });
 
 
