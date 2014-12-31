@@ -247,13 +247,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         window.addEventListener('touchend', function (e) {
             if (playheadClicked) {
-                alert("woah");
+               // alert("woah");
                 myAudio.pause();
                 var mousePos = Math.floor(e.pageX);
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 myAudio.currentTime = clickTime;
-                alert("shoulda worked");
+                alert(mousePos +" "+clickTime);
                 myAudio.play();
                 playheadClicked = false;
             }
