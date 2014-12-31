@@ -244,6 +244,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (Math.abs(position - e.pageX) < 15) {
                 playheadClicked = true;
             }
+            else{
+                var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = Math.floor(clickTime);
+            }
 
         });
 
