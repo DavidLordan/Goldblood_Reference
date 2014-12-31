@@ -200,7 +200,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                         //alert(myAudio.currentTime +" "+clickTime);
                         //myAudio.play();
                         playheadClicked = false;
-                        alert("alert3");
+                        alert("alert1");
                     }
                 });
             }
