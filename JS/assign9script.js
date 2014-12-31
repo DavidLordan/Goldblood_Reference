@@ -179,6 +179,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         var progress = document.getElementById('progress');
 
+
+/*
         progress.addEventListener('click', function (e) {
             if(!playheadClicked){
             // calculate the normalized position clicked
@@ -190,6 +192,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             alert("click");
         }
         });
+        */
 
         window.addEventListener('mousemove', function (e) {
             if (playheadClicked) {
@@ -213,7 +216,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         window.addEventListener('mouseup', function (e) {
             if (playheadClicked) {
-                //  console.log("up");
+                console.log("up");
                 playheadClicked = false;
                 var mousePos = Math.floor(e.pageX);
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
@@ -230,9 +233,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
                 var mousePos = Math.floor(e.pageX);
-
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
-
             }
         });
 
