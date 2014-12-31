@@ -28,11 +28,12 @@ table{
     margin-top: 15px;
     border-style: solid;
     border-color: white;
-    padding: 10px 25px;
+    padding: 10px 0px;
     background-color: #242B33;
     box-shadow: 1px 1px 2px black;   
     color:white;
     width:100%;
+    min-width: 444px;
 
 }
 
@@ -47,13 +48,14 @@ table{
 
 /* Overrides the default a tag rules, used for table headers. */
 #setlist{
-    padding: 5px;
+   padding-top: 10px;
     box-shadow: 2px 2px 2px black;
     background-color: #242B33;
     margin-top: 5px;
     margin-bottom: 10px;
     border-style: solid;
     border-color: white;
+    min-width: 444px;
 }
 
 
