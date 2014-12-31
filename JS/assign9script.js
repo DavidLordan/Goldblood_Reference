@@ -63,6 +63,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.audioActive = "";
     $scope.nowPlaying = "";
     $scope.currentSongList = "";
+    $scope.timeSpent = "";
+    $scope.timeRemaining = "";
     
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
@@ -146,6 +148,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         myAudio.addEventListener('timeupdate', function () {
 
+            $scope.timeSpent = myAudio.currentTime;
+            $scope.timeRemaining = myAudio.duration - myAudio.currentTime;
+            $scope.$apply();
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
 
         });
@@ -203,7 +208,8 @@ assign9.filter("audioFilter", function () {
 // like a good thing to practice. 
 assign9.filter("timeFilter", function () {
     return function (time) {
-
+        
+        
         var seconds = time % 60;
         var minutes = (time - seconds) / 60;
         if (seconds < 10) {
@@ -218,7 +224,7 @@ assign9.filter("timeFilter", function () {
             }
             return hours + "h, " + minutes + "m, " + seconds + "s";
         } else {
-            return minutes + "m, " + seconds + "s";
+            return minutes + ":" + seconds ;
         }
     };
 });

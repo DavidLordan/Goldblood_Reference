@@ -77,23 +77,30 @@ table{
     border-width: 0px;
     background-color: black;
 
-    margin-bottom: 8px;
-    width: 25%;
+   // margin-bottom: -10px;
+    margin-top: 5px;
+    width: 10%;
     max-width: 100px;
 
 }
 
+#controls{
+    text-align: center;
+    margin: auto;
+}
+
 #progress {
     margin: 0px 50px 10px 50px;
-    border: 3px solid black;
+    border: 3px solid;
+    border-color: white;
     border-radius: 13px;
     cursor: pointer;
-    background-color: #cccccc;
+    background-color: black;
 }
 
 #bar {
     height: 15px;
-    background-color: #6600cc;
+    background-color: #3300ff;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     width: 0;
@@ -110,7 +117,7 @@ table{
     border-radius:50px;
     line-height:100px;
     text-align:center;
-    background:#6600cc;
+    background:#3300ff;
     position: absolute;
 }
 
@@ -141,15 +148,13 @@ table{
     border-left-width: 1px;
 }
 
-.sublist input{
+#sublistContainer .sublist input{
    font-family: 'Open Sans', sans-serif;
-    height: 30px;
+    height: 40px;
     margin:5px;
     margin-bottom: 10px;
-    background-color: white;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: black;
+    //text-decoration: underline;
+    font-size: 1.3em;
 }
 
 .sublist input:active {
@@ -178,6 +183,7 @@ table{
 td{
     border-style: solid;
     border-color: black;
+    padding:5px;
     //border-right: none;
     //border-left: none;
 }
@@ -189,4 +195,22 @@ button{
 
 #sublistContainer{
     text-align: center;
+}
+
+#nowPlaying{
+    text-align: center;
+    color:white;
+    font-size: 1.2em;
+    margin: auto;
+    width:90%;
+}
+
+#timeSpent{
+    float:left;
+    text-align: left;
+}
+
+#timeRemaining{
+    float:right;
+    text-align: right;
 }
