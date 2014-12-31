@@ -99,14 +99,17 @@
 
                 <div id="progress">
                     <div id="circle2"></div>
-                    <div id="circle1"></div>
                     <div id="bar"></div>
                 </div><!-- End progress bar-->
 
 
-                <div id="sublist">
-                    <input type="button" value="Finished Songs" ng-click="finishedList()"/>
-                    <input type="button" value="Incomplete Songs/Ideas" ng-click="unfinishedList()"/>
+                <div class="sublist">
+                    <input type="button" value="Finished Songs" ng-click="changeList('GB_songs')"/>
+                    <input type="button" value="Incomplete Songs/Ideas" ng-click="changeList('GB_ideas')"/>
+                </div>
+                <div class="sublist">
+                    <input type="button" value="Notation/Tabs" ng-click="changeList('GB_Notation')"/>
+                    <input type="button" value="Downloads" ng-click="changeList('GB_Downloads')"/>
                 </div>
             </div><!-- End interaction div-->
             
