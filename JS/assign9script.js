@@ -182,17 +182,17 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         progress.addEventListener('mouseup', function (e) {
-            if(!playheadClicked){
-            // calculate the normalized position clicked
-            var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
-            var clickTime = (clickPosition * myAudio.duration);
-            // move the playhead to the correct position
-            myAudio.currentTime = clickTime;
-            bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-            //alert("click");
-        }
+            if (!playheadClicked) {
+                // calculate the normalized position clicked
+                var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                // move the playhead to the correct position
+                myAudio.currentTime = clickTime;
+                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+                alert("click1");
+            }
         });
-        
+
         window.addEventListener('mousemove', function (e) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
@@ -221,6 +221,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 myAudio.currentTime = clickTime;
+                alert("click2");
             }
         });
 
@@ -242,53 +243,53 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             var position = p.position().left;
             if (Math.abs(position - e.pageX) < 15) {
                 playheadClicked = true;
-                
-                 window.addEventListener('touchend', function (e) {
-            if (playheadClicked) {
-               // alert("woah");
-                //myAudio.pause();
-                var mousePos = Math.floor(e.pageX);
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-                myAudio.currentTime = Math.floor(clickTime);
-                //alert(myAudio.currentTime +" "+clickTime);
-                //myAudio.play();
-                playheadClicked = false;
+
+                window.addEventListener('touchend', function (e) {
+                    if (playheadClicked) {
+                        // alert("woah");
+                        //myAudio.pause();
+                        var mousePos = Math.floor(e.pageX);
+                        var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                        var clickTime = (clickPosition * myAudio.duration);
+                        myAudio.currentTime = Math.floor(clickTime);
+                        //alert(myAudio.currentTime +" "+clickTime);
+                        //myAudio.play();
+                        playheadClicked = false;
+                        alert("alert3");
+                    }
+                });
             }
         });
-                
-                
-                
-            }
-            
-        });
-
-        window.addEventListener('touchend', function (e) {
-            if (false) {
-               // alert("woah");
-                //myAudio.pause();
-                var mousePos = Math.floor(e.pageX);
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-                myAudio.currentTime = Math.floor(clickTime);
-                //alert(myAudio.currentTime +" "+clickTime);
-                //myAudio.play();
-                playheadClicked = false;
-            }
-        });
-        
-        progress.addEventListener('touchend', function (e){
-             var mousePos = Math.floor(e.pageX);
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-            //    myAudio.currentTime = Math.floor(clickTime);
-                //alert(myAudio.currentTime +" "+clickTime);
-                //myAudio.play();
-              //  alert("thisguy");
-        });
 
 
 
+        /*
+         window.addEventListener('touchend', function (e) {
+         if (false) {
+         // alert("woah");
+         //myAudio.pause();
+         // var mousePos = Math.floor(e.pageX);
+         //   var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+         //     var clickTime = (clickPosition * myAudio.duration);
+         //       myAudio.currentTime = Math.floor(clickTime);
+         //alert(myAudio.currentTime +" "+clickTime);
+         //myAudio.play();
+         //playheadClicked = false;
+         alert("imposssible");
+         }
+         });        
+         progress.addEventListener('touchend', function (e){
+         // var mousePos = Math.floor(e.pageX);
+         //var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+         //  var clickTime = (clickPosition * myAudio.duration);
+         //    myAudio.currentTime = Math.floor(clickTime);
+         //alert(myAudio.currentTime +" "+clickTime);
+         //myAudio.play();
+         //  alert("thisguy");
+         });
+         
+         
+         */
 
     };
 
