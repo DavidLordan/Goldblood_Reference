@@ -68,10 +68,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
-
-
-
-
         if ($scope.currentSongList === "GB_ideas" || $scope.currentSongList === "GB_songs") {
 
             $scope.nowPlaying = "";
@@ -83,6 +79,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (myAudio.currentTime !== 0) {
 
                 myAudio.currentTime = 0;
+                $scope.timeRemaining = 0;
+                $scope.timeSpent = 0;
                 var bar = document.getElementById('bar');
                 bar.style.width = 0;
 
@@ -249,7 +247,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         window.addEventListener('touchend', function (e) {
             if (playheadClicked) {
-                //  console.log("up");
+                alert("woah");
 
                 var mousePos = Math.floor(e.pageX);
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
@@ -264,7 +262,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
     };
-
 
     var keyValid = true;
     $(document).on('keydown', function (e) {
