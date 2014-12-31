@@ -222,7 +222,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
 
-
+//git add . && git commit -m "testing" && git push
 
 
         window.addEventListener('touchmove', function (e) {
@@ -248,13 +248,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         window.addEventListener('touchend', function (e) {
             if (playheadClicked) {
                 alert("woah");
-
+                myAudio.pause();
                 var mousePos = Math.floor(e.pageX);
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 myAudio.currentTime = clickTime;
                 alert("shoulda worked");
-
+                myAudio.play();
                 playheadClicked = false;
             }
         });
