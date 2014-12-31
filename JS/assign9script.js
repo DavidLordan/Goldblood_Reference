@@ -180,8 +180,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var progress = document.getElementById('progress');
 
 
-/*
-        progress.addEventListener('click', function (e) {
+
+        progress.addEventListener('mouseup', function (e) {
             if(!playheadClicked){
             // calculate the normalized position clicked
             var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
@@ -189,10 +189,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             // move the playhead to the correct position
             myAudio.currentTime = clickTime;
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-            alert("click");
+            //alert("click");
         }
         });
-        */
+        
 
         window.addEventListener('mousemove', function (e) {
             if (playheadClicked) {
