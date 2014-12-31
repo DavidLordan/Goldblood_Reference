@@ -187,7 +187,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             // move the playhead to the correct position
             myAudio.currentTime = clickTime;
             bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-
+            alert("click");
         });
 
         window.addEventListener('mousemove', function (e) {
