@@ -242,12 +242,29 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             var position = p.position().left;
             if (Math.abs(position - e.pageX) < 15) {
                 playheadClicked = true;
+                
+                 window.addEventListener('touchend', function (e) {
+            if (playheadClicked) {
+               // alert("woah");
+                //myAudio.pause();
+                var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = Math.floor(clickTime);
+                //alert(myAudio.currentTime +" "+clickTime);
+                //myAudio.play();
+                playheadClicked = false;
+            }
+        });
+                
+                
+                
             }
             
         });
 
         window.addEventListener('touchend', function (e) {
-            if (playheadClicked) {
+            if (false) {
                // alert("woah");
                 //myAudio.pause();
                 var mousePos = Math.floor(e.pageX);
@@ -267,6 +284,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 myAudio.currentTime = Math.floor(clickTime);
                 //alert(myAudio.currentTime +" "+clickTime);
                 //myAudio.play();
+                alert("thisguy");
         });
 
 
