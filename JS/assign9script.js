@@ -239,6 +239,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         $(document.documentElement).bind("mouseup touchend", function (e) {
             if (playheadClicked) {
+                alert("touchend2");
                 e.stopPropagation();
                 e.preventDefault();
                 // calculate the normalized position clicked
