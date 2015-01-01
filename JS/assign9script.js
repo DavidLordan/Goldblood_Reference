@@ -160,9 +160,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var touchPos = Math.floor(endCoords.pageX);
 
         if (Math.abs((position - e.pageX) < 15) || (Math.abs(position - touchPos) < 15)) {
-         //   alert("touchedHead");
+            //   alert("touchedHead");
             return true;
-            
+
         }
         else {
             return false;
@@ -215,17 +215,19 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         $(document).bind('touchmove', function (e) {
+
+            var endCoords = e.originalEvent.targetTouches[0];
+            var mousePos = Math.floor(endCoords.pageX);
+
+
+            var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+            var clickTime = (clickPosition * myAudio.duration);
+
             if (playheadClicked) {
-                var endCoords = e.originalEvent.targetTouches[0];
-                var mousePos = Math.floor(endCoords.pageX);
-
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
-
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-
                 myAudio.currentTime = clickTime;
             }
+
         });
 
 
@@ -279,10 +281,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //    alert(allowMouseUp);
             }
         });
-        
-        $(document.documentElement).bind('touchend', function(e){
-           playheadClicked = false;
-         //  alert("false");
+
+        $(document.documentElement).bind('touchend', function (e) {
+            playheadClicked = false;
+            //  alert("false");
+        });
+        $(progress).bind("touchend", function(e){
+            
         });
 
 //git add . && git commit -m "testing" && git push
