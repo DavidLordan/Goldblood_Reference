@@ -161,16 +161,26 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         if (typeof e.originalEvent.targetTouches !== 'undefined') {
             var endCoords = e.originalEvent.targetTouches[0];
             touchPos = Math.floor(endCoords.pageX);
-        }
-        if (Math.abs((position - e.pageX) < 15) || (Math.abs(position - touchPos) < 15)) {
-            //   alert("touchedHead");
-            return true;
-
+            return (Math.abs(position - touchPos) < 15);
         }
         else {
-            return false;
+            console.log("undef.");
+            console.log(Math.abs(position - e.pageX));
+            if(Math.abs(position - e.pageX) < 15){
+                console.log("headTouched");
+                return true;
+            }else{
+                console.log("headUnTouched");
+                return false;
+            }
+
+
+
+
+
+
         }
-        //return (Math.abs(position - e.pageX) < 15);
+
 
     };
     //Initializes and maintains progress bar
@@ -250,14 +260,16 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         $(progress).bind("mouseup", function (e) {
-            
+
+            if (!playheadClicked) {
+                console.log("thisguy");
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
                 myAudio.currentTime = clickTime;
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-                playheadClicked = false;
-
+                // playheadClicked = false;
+            }
         });
 
 
@@ -272,7 +284,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         $(document.documentElement).bind('touchend', function (e) {
             playheadClicked = false;
-            //  alert("false");
         });
 
 //git add . && git commit -m "testing" && git push
