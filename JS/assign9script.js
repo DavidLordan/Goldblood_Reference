@@ -197,7 +197,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
-            alert("touchstart");
+           // alert("touchstart");
             e.stopPropagation();
             e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
