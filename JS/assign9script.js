@@ -239,9 +239,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //    alert(allowMouseUp);
             }
         });
-        $(document.documentElement).bind("mouseup touchend", function (e) {
+        $(document.documentElement).bind("mouseup", function (e) {
             if (playheadClicked) {
-                alert("touchend2");
+                //alert("touchend2");
                 e.stopPropagation();
                 e.preventDefault();
                 alert(e.pageX);
@@ -250,7 +250,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
                 myAudio.currentTime = clickTime;
-                alert(myAudio.currentTime + " " + clickTime);
+               // alert(myAudio.currentTime + " " + clickTime);
                 //alert(clickTime);
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
                 //alert("click1");
