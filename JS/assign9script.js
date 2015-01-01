@@ -227,7 +227,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //e.preventDefault();
                 // calculate the normalized position clicked
                 alert(e.pageX);
-                var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
+                var xPos = e.originalEvent.touches[0].pageX;
+                var clickPosition = ((xPos - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
                 myAudio.currentTime = clickTime;
