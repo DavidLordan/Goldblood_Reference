@@ -212,9 +212,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                // alert((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%");
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
                 
-                var clickTime = (mousePos * myAudio.duration);
+                
+                
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                //var clickTime = (mousePos * myAudio.duration);
                 // move the playhead to the correct position
-                alert(clickTime + " " + mousePos + " " + myAudio.duration);
+                //alert(clickTime + " " + mousePos + " " + myAudio.duration);
                 myAudio.currentTime = clickTime;
             }
         });
