@@ -197,7 +197,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
-           // alert("touchstart");
+            alert("touchstart");
             e.stopPropagation();
             e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
@@ -210,6 +210,11 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
         });
+        
+        
+        
+        
+        
         window.addEventListener('mousemove', function (e) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
@@ -219,14 +224,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
             }
         });
-
         $(progress).bind("mouseup", function (e) {
             if (!playheadClicked) {
                 
                 e.stopPropagation();
                 e.preventDefault();
                 // calculate the normalized position clicked
-                alert(e.pageX);
+             //   alert(e.pageX);
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
@@ -235,7 +239,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
                 //alert("click1");
                 playheadClicked = false;
-                alert(clickTime + " " + myAudio.currentTime);
+               // alert(clickTime + " " + myAudio.currentTime);
                 //    alert(allowMouseUp);
             }
         });
@@ -244,7 +248,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert("touchend2");
                 e.stopPropagation();
                 e.preventDefault();
-                alert(e.pageX);
+            //    alert(e.pageX);
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
