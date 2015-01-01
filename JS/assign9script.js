@@ -232,7 +232,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         
         document.addEventListener('touchend', function (e) {
             if (playheadClicked) {
-                alert("ended");
+                //alert("ended");
                 //    console.log("up");
                 
                 var mousePos = e.pageX;
@@ -240,7 +240,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickTime = (clickPosition * myAudio.duration);
                 clickTime = Math.floor(clickTime);
                 myAudio.currentTime = clickTime;
-                alert(clickTime);
+                //alert(clickTime);
                 //alert("click2");
                 playheadClicked = false;
                 allowMouseUp = false;
