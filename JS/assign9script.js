@@ -279,6 +279,11 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //    alert(allowMouseUp);
             }
         });
+        
+        $(document.documentElement).bind('touchend', function(e){
+           clickedplayHead = false;
+           alert("false");
+        });
 
 //git add . && git commit -m "testing" && git push
 
