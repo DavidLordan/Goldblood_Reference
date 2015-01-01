@@ -224,7 +224,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 // move the playhead to the correct position
                 myAudio.currentTime = clickTime;
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-                //alert("click1");
+                alert("click1");
             }
         });
         
@@ -236,7 +236,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 myAudio.currentTime = clickTime;
-                //alert("click2");
+                alert("click2");
             }
         });
 
