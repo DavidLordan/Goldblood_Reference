@@ -222,7 +222,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mouseup touchend", function (e) {
             if (!playheadClicked) {
-                alert("touchend");
+                
                 e.stopPropagation();
                 e.preventDefault();
                 // calculate the normalized position clicked
@@ -234,6 +234,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
                 //alert("click1");
                 playheadClicked = false;
+                alert("touchend");
                 //    alert(allowMouseUp);
             }
         });
