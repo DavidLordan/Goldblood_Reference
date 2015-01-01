@@ -65,6 +65,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
     $scope.tableName = "Finished Songs";
+    var usingMouse = false;
 
     //The movable song is updated when the corresponding radio box is clicked.
     $scope.updateActive = function (i) {
@@ -164,7 +165,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             return (Math.abs(position - touchPos) < 15);
         }
         else {
-            alert("wrongOne");
+            usingMouse = true;
             if(Math.abs(position - e.pageX) < 15){
               //  console.log("headTouched");
                 return true;
@@ -238,7 +239,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(document.documentElement).bind('mousemove', function (e) {
             if (playheadClicked) {
-
+                alert("mousemove");
                 var mousePos = Math.floor(e.pageX);
                 e.stopPropagation();
                 e.preventDefault();
@@ -261,7 +262,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("mouseup", function (e) {
 
             if (!playheadClicked) {
-                console.log("thisguy");
+               // console.log("thisguy");
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
