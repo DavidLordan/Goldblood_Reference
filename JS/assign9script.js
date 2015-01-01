@@ -285,10 +285,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             //  alert("false");
         });
         $(progress).bind("touchend", function (e) {
+            alert("dude");
             var endCoords = e.originalEvent.targetTouches[0];
             var mousePos = Math.floor(endCoords.pageX);
             var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
             var clickTime = (clickPosition * myAudio.duration);
+            alert(clickTime);
             bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             myAudio.currentTime = clickTime;
         });
