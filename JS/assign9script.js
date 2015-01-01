@@ -208,7 +208,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (true) {
                 var endCoords = e.originalEvent.targetTouches[0];
                 var mousePos = Math.floor(endCoords.pageX);
-                alert(Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%");
+                alert((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%");
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
         });
