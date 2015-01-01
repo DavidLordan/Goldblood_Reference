@@ -186,51 +186,14 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
 
         });
+
         var progress = document.getElementById('progress');
 
-
-
-
-
-
         progress.addEventListener('touchstart', function (e) {
-            if ($scope.clickedPlayhead(e, this)) {
-                window.addEventListener('mouseup', function (e) {
-                    if (playheadClicked) {
-                        // alert("woah");
-                        //myAudio.pause();
-                        var mousePos = Math.floor(e.pageX);
-                        var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                        var clickTime = (clickPosition * myAudio.duration);
-                        myAudio.currentTime = Math.floor(clickTime);
-                        //alert(myAudio.currentTime +" "+clickTime);
-                        //myAudio.play();
-                        playheadClicked = false;
-                        // alert("alert1");
-                    }
-                });
-            }
+            playheadClicked = $scope.clickedPlayhead(e, this);
         });
-
         progress.addEventListener('mousedown', function (e) {
-            if ($scope.clickedPlayhead(e, this)) {
-                playheadClicked = true;
-
-                window.addEventListener('mouseup', function (e) {
-                    if (playheadClicked) {
-                        // alert("woah");
-                        //myAudio.pause();
-                        var mousePos = Math.floor(e.pageX);
-                        var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-                        var clickTime = (clickPosition * myAudio.duration);
-                        myAudio.currentTime = Math.floor(clickTime);
-                        //alert(myAudio.currentTime +" "+clickTime);
-                        //myAudio.play();
-                        playheadClicked = false;
-                        //alert("alert3");
-                    }
-                });
-            }
+            playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
 
@@ -252,39 +215,31 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
 
-        /*
-         progress.addEventListener('mouseup', function (e) {
-         if (!playheadClicked) {
-         // calculate the normalized position clicked
-         var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
-         var clickTime = (clickPosition * myAudio.duration);
-         // move the playhead to the correct position
-         myAudio.currentTime = clickTime;
-         bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-         alert("click1");
-         }
-         });
-         progress.addEventListener('mousedown', function (e) {
-         var clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
-         var p = $("#circle1");
-         var position = p.position().left;
-         if (Math.abs(position - e.pageX) < 15) {
-         playheadClicked = true;
-         }
-         
-         });
-         window.addEventListener('mouseup', function (e) {
-         if (playheadClicked) {
-         //    console.log("up");
-         playheadClicked = false;
-         var mousePos = Math.floor(e.pageX);
-         var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-         var clickTime = (clickPosition * myAudio.duration);
-         myAudio.currentTime = clickTime;
-         alert("click2");
-         }
-         });
-         */
+
+        progress.addEventListener('mouseup', function (e) {
+            if (!playheadClicked) {
+                // calculate the normalized position clicked
+                var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                // move the playhead to the correct position
+                myAudio.currentTime = clickTime;
+                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+                //alert("click1");
+            }
+        });
+        
+        window.addEventListener('mouseup', function (e) {
+            if (playheadClicked) {
+                //    console.log("up");
+                playheadClicked = false;
+                var mousePos = Math.floor(e.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                var clickTime = (clickPosition * myAudio.duration);
+                myAudio.currentTime = clickTime;
+                //alert("click2");
+            }
+        });
+
 
 //git add . && git commit -m "testing" && git push
 
