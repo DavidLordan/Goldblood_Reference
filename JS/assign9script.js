@@ -244,8 +244,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("mouseup", function (e) {
             if (!playheadClicked) {
 
-                e.stopPropagation();
-                e.preventDefault();
+               // e.stopPropagation();
+                //e.preventDefault();
                 // calculate the normalized position clicked
                 //   alert(e.pageX);
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
@@ -287,7 +287,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("touchend", function (e) {
             alert("dude");
             var endCoords = e.originalEvent.targetTouches[0];
-            alert(e);
+            alert(e.pageX);
             var mousePos = Math.floor(endCoords.pageX);
             alert(mousePos);
             var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
