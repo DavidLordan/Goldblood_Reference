@@ -287,7 +287,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("touchend", function (e) {
             alert("dude");
             var endCoords = e.originalEvent.targetTouches[0];
-            alert(endCoords);
+            alert(e);
             var mousePos = Math.floor(endCoords.pageX);
             alert(mousePos);
             var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
