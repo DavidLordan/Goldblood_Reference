@@ -160,7 +160,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var touchPos = Math.floor(endCoords.pageX);
 
         if (Math.abs((position - e.pageX) < 15) || (Math.abs(position - touchPos) < 15)) {
-            alert("touchedHead");
+         //   alert("touchedHead");
             return true;
             
         }
