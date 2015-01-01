@@ -190,20 +190,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         var progress = document.getElementById('progress');
 
-        progress.addEventListener('touchstart', function (e) {
-            allowMouseUp = false;
+        $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
-        progress.addEventListener('click', function (e) {
-            if(allowMouseUp){
-           
-           // alert("mouseDown");
-            console.log(allowMouseUp);
-            playheadClicked = $scope.clickedPlayhead(e, this);
-        }
-        });
-
 
         window.addEventListener('touchmove', function (e) {
             if (playheadClicked) {
@@ -222,10 +212,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
         });
 
-
-
-        progress.addEventListener('mouseup', function (e) {
-            if (allowMouseUp) {
+        $(progress).bind("mouseup touchend", function (e) {
+            if (!playheadClicked) {
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -235,30 +223,27 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
                 //alert("click1");
                 playheadClicked = false;
-                alert(allowMouseUp);
+                //    alert(allowMouseUp);
             }
         });
         
-        document.addEventListener('touchend', function (e) {
+        $(document.documentElement).bind("mouseup touchend", function (e) {
             if (playheadClicked) {
-                //alert("ended");
-                //    console.log("up");
-                
-                var mousePos = e.pageX;
-                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+                // calculate the normalized position clicked
+                var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
-                clickTime = Math.floor(clickTime);
+                // move the playhead to the correct position
                 myAudio.currentTime = clickTime;
                 //alert(clickTime);
-                //alert("click2");
+                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+                //alert("click1");
                 playheadClicked = false;
-                allowMouseUp = false;
-            }
-            else{
-                allowMouseUp=true;
+                //    alert(allowMouseUp);
             }
         });
-      
+
+
+
 
 
 //git add . && git commit -m "testing" && git push
@@ -269,34 +254,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
 
-
-        /*
-         window.addEventListener('touchend', function (e) {
-         if (false) {
-         // alert("woah");
-         //myAudio.pause();
-         // var mousePos = Math.floor(e.pageX);
-         //   var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-         //     var clickTime = (clickPosition * myAudio.duration);
-         //       myAudio.currentTime = Math.floor(clickTime);
-         //alert(myAudio.currentTime +" "+clickTime);
-         //myAudio.play();
-         //playheadClicked = false;
-         alert("imposssible");
-         }
-         });        
-         progress.addEventListener('touchend', function (e){
-         // var mousePos = Math.floor(e.pageX);
-         //var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-         //  var clickTime = (clickPosition * myAudio.duration);
-         //    myAudio.currentTime = Math.floor(clickTime);
-         //alert(myAudio.currentTime +" "+clickTime);
-         //myAudio.play();
-         //  alert("thisguy");
-         });
-         
-         
-         */
 
     };
 
