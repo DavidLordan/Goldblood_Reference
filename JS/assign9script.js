@@ -191,9 +191,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var progress = document.getElementById('progress');
 
         progress.addEventListener('touchstart', function (e) {
+            allowMouseUp = false;
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
         progress.addEventListener('mousedown', function (e) {
+            allowMouseUp = true;
+            console.log(allowMouseUp);
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
@@ -218,7 +221,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         progress.addEventListener('mouseup', function (e) {
-            if (!playheadClicked && allowMouseUp) {
+            if (allowMouseUp) {
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -227,6 +230,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert(clickTime);
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
                 //alert("click1");
+                playheadClicked = false;
             }
         });
         
@@ -249,6 +253,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 allowMouseUp=true;
             }
         });
+      
 
 
 //git add . && git commit -m "testing" && git push
