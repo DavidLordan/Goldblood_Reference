@@ -283,6 +283,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         $(progress).bind("touchend", function (e) {
             alert("dude");
+            alert(e.changedTouches[0].pageX);
             var endCoords = e.changedTouches[0].pageX;
             alert(endCoords);
             var mousePos = Math.floor(endCoords.pageX);
