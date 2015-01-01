@@ -197,6 +197,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
+            alert("touchstart");
             e.stopPropagation();
             e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
@@ -221,8 +222,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mouseup touchend", function (e) {
             if (!playheadClicked) {
-                 e.stopPropagation();
-            e.preventDefault();
+                alert("touchend");
+                e.stopPropagation();
+                e.preventDefault();
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -237,8 +239,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         $(document.documentElement).bind("mouseup touchend", function (e) {
             if (playheadClicked) {
-                 e.stopPropagation();
-            e.preventDefault();
+                e.stopPropagation();
+                e.preventDefault();
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
