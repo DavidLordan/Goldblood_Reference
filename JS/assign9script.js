@@ -168,6 +168,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var playheadClicked = false;
         var allowMouseUp = false;
 
+
+
+
+
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
             $scope.nowPlaying = "";
@@ -177,6 +181,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             console.log($scope.nowPlaying);
             this.currentTime = 0;
         });
+
         myAudio.addEventListener('timeupdate', function () {
 
             $scope.timeSpent = Math.floor(myAudio.currentTime);
@@ -192,6 +197,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
+            e.stopPropagation();
+            e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
@@ -214,6 +221,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mouseup touchend", function (e) {
             if (!playheadClicked) {
+                 e.stopPropagation();
+            e.preventDefault();
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -226,9 +235,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //    alert(allowMouseUp);
             }
         });
-        
         $(document.documentElement).bind("mouseup touchend", function (e) {
             if (playheadClicked) {
+                 e.stopPropagation();
+            e.preventDefault();
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -242,17 +252,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
         });
 
-
-
-
-
 //git add . && git commit -m "testing" && git push
-
-
-
-
-
-
 
 
     };
