@@ -204,7 +204,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             alert(playheadClicked);
         });
 
-        window.addEventListener('touchmove', function (e) {
+        $(document).bind('touchmove', function (e) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
                 var mousePos = Math.floor(e.pageX);
