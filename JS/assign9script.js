@@ -208,8 +208,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (true) {
                 var endCoords = e.originalEvent.targetTouches[0];
                 var mousePos = Math.floor(endCoords.pageX);
-                alert(mousePos);
-                alert((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%");
+                alert(progress.offsetLeft + " " + progress.offsetWidth + " " + myAudio.duration);
+               // alert((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%");
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
         });
