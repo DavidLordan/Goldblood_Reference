@@ -244,10 +244,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("mouseup", function (e) {
             if (!playheadClicked) {
 
-               // e.stopPropagation();
-                //e.preventDefault();
-                // calculate the normalized position clicked
-                //   alert(e.pageX);
+              
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
@@ -257,7 +254,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert("click1");
                 playheadClicked = false;
                 // alert(clickTime + " " + myAudio.currentTime);
-                alert("mouseUP1");
+                //alert("mouseUP1");
             }
         });
         $(document.documentElement).bind("mouseup", function (e) {
