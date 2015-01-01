@@ -205,20 +205,15 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         $(document).bind('touchmove', function (e) {
-            if (true) {
+            if (playheadClicked) {
                 var endCoords = e.originalEvent.targetTouches[0];
                 var mousePos = Math.floor(endCoords.pageX);
-               // alert(progress.offsetLeft + " " + progress.offsetWidth + " " + myAudio.duration);
-               // alert((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%");
+
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
-                
-                
-                
+
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
-                //var clickTime = (mousePos * myAudio.duration);
-                // move the playhead to the correct position
-                //alert(clickTime + " " + mousePos + " " + myAudio.duration);
+
                 myAudio.currentTime = clickTime;
             }
         });
@@ -252,7 +247,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert("click1");
                 playheadClicked = false;
                 // alert(clickTime + " " + myAudio.currentTime);
-                //    alert(allowMouseUp);
+                alert("mouseUP1");
             }
         });
         $(document.documentElement).bind("mouseup", function (e) {
@@ -269,7 +264,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 // alert(myAudio.currentTime + " " + clickTime);
                 //alert(clickTime);
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-                //alert("click1");
+                alert("click1");
                 playheadClicked = false;
                 //    alert(allowMouseUp);
             }
