@@ -245,6 +245,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 playheadClicked = false;
                 allowMouseUp = false;
             }
+            else{
+                allowMouseUp=true;
+            }
         });
 
 
