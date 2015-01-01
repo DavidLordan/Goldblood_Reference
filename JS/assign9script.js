@@ -207,7 +207,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(document).bind('touchmove', function (e) {
             if (true) {
                 var endCoords = e.originalEvent.targetTouches[0];
-                var mousePos = Math.floor(endCoords);
+                var mousePos = Math.floor(endCoords.pageX);
                 alert(endCoords + " " + mousePos);
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
