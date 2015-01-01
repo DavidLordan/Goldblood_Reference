@@ -220,7 +220,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
         });
 
-        $(progress).bind("mouseup touchend", function (e) {
+        $(progress).bind("mouseup", function (e) {
             if (!playheadClicked) {
                 
                 e.stopPropagation();
