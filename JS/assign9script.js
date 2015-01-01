@@ -214,7 +214,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 
                 var clickTime = (mousePos * myAudio.duration);
                 // move the playhead to the correct position
-                alert(clickTime);
+                alert(clickTime + " " + mousePos + " " + myAudio.duration);
                 myAudio.currentTime = clickTime;
             }
         });
