@@ -164,13 +164,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             return (Math.abs(position - touchPos) < 15);
         }
         else {
-            console.log("undef.");
-            console.log(Math.abs(position - e.pageX));
+            alert("wrongOne");
             if(Math.abs(position - e.pageX) < 15){
-                console.log("headTouched");
+              //  console.log("headTouched");
                 return true;
             }else{
-                console.log("headUnTouched");
+                //console.log("headUnTouched");
                 return false;
             }
 
