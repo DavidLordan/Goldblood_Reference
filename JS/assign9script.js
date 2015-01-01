@@ -257,7 +257,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert("click1");
                 playheadClicked = false;
                 // alert(clickTime + " " + myAudio.currentTime);
-                //alert("mouseUP1");
+                alert("mouseUP1");
             }
         });
         $(document.documentElement).bind("mouseup", function (e) {
