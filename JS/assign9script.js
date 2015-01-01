@@ -228,7 +228,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
         });
         
-        window.addEventListener('mouseup', function (e) {
+        window.addEventListener('touchend', function (e) {
             if (playheadClicked) {
                 //    console.log("up");
                 playheadClicked = false;
