@@ -218,8 +218,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
             var endCoords = e.originalEvent.targetTouches[0];
             var mousePos = Math.floor(endCoords.pageX);
-
-
             var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
             var clickTime = (clickPosition * myAudio.duration);
 
@@ -286,8 +284,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             playheadClicked = false;
             //  alert("false");
         });
-        $(progress).bind("touchend", function(e){
-            
+        $(progress).bind("touchend", function (e) {
+            var endCoords = e.originalEvent.targetTouches[0];
+            var mousePos = Math.floor(endCoords.pageX);
+            var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
+            var clickTime = (clickPosition * myAudio.duration);
+            bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+            myAudio.currentTime = clickTime;
         });
 
 //git add . && git commit -m "testing" && git push
