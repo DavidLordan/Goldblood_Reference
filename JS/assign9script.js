@@ -201,6 +201,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             e.stopPropagation();
             e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
+            alert(playheadClicked);
         });
 
         window.addEventListener('touchmove', function (e) {
