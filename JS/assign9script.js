@@ -247,7 +247,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 //alert("click1");
                 playheadClicked = false;
                 // alert(clickTime + " " + myAudio.currentTime);
-                alert("mouseUP1");
+                //alert("mouseUP1");
             }
         });
         $(document.documentElement).bind("mouseup", function (e) {
@@ -264,7 +264,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 // alert(myAudio.currentTime + " " + clickTime);
                 //alert(clickTime);
                 bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-                alert("click1");
+                //alert("click1");
                 playheadClicked = false;
                 //    alert(allowMouseUp);
             }
