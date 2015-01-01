@@ -156,8 +156,18 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var clickPosition = (e.pageX - doc.offsetLeft) / doc.offsetWidth;
         var p = $("#circle1");
         var position = p.position().left;
+        var endCoords = e.originalEvent.targetTouches[0];
+        var touchPos = Math.floor(endCoords.pageX);
 
-        return (Math.abs(position - e.pageX) < 15);
+        if (Math.abs((position - e.pageX) < 15) || (Math.abs(position - touchPos) < 15)) {
+            alert("touchedHead");
+            return true;
+            
+        }
+        else {
+            return false;
+        }
+        //return (Math.abs(position - e.pageX) < 15);
 
     };
     //Initializes and maintains progress bar
@@ -205,7 +215,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         $(document).bind('touchmove', function (e) {
-            if (true) {
+            if (playheadClicked) {
                 var endCoords = e.originalEvent.targetTouches[0];
                 var mousePos = Math.floor(endCoords.pageX);
 
