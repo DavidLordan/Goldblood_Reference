@@ -205,7 +205,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         $(document).bind('touchmove', function (e) {
-            if (true) {
+            if (playheadClicked) {
                 var endCoords = e.originalEvent.targetTouches[0];
                 var mousePos = Math.floor(endCoords.pageX);
                // alert(progress.offsetLeft + " " + progress.offsetWidth + " " + myAudio.duration);
@@ -214,6 +214,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 
                 var clickTime = (mousePos * myAudio.duration);
                 // move the playhead to the correct position
+                alert(clickTime);
                 myAudio.currentTime = clickTime;
             }
         });
