@@ -223,8 +223,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("mouseup touchend", function (e) {
             if (!playheadClicked) {
                 
-                e.stopPropagation();
-                e.preventDefault();
+               // e.stopPropagation();
+                //e.preventDefault();
                 // calculate the normalized position clicked
                 alert(e.pageX);
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
