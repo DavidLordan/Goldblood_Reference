@@ -197,16 +197,17 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
-            alert("touchstart");
+          //  alert("touchstart");
             e.stopPropagation();
             e.preventDefault();
             playheadClicked = $scope.clickedPlayhead(e, this);
-            alert(playheadClicked);
+            //alert(playheadClicked);
         });
 
         $(document).bind('touchmove', function (e) {
             if (playheadClicked) {
                 //console.log(Math.floor(e.pageX)); 
+                alert("iono");
                 var mousePos = Math.floor(e.pageX);
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
