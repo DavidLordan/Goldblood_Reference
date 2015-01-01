@@ -192,10 +192,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         progress.addEventListener('touchstart', function (e) {
             allowMouseUp = false;
+            
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
         progress.addEventListener('mousedown', function (e) {
             allowMouseUp = true;
+            alert("mouseDown");
             console.log(allowMouseUp);
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
