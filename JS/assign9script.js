@@ -166,6 +166,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var myAudio = document.getElementById('my-audio');
         var bar = document.getElementById('bar');
         var playheadClicked = false;
+        var allowMouseUp = false;
 
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
@@ -217,7 +218,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         progress.addEventListener('mouseup', function (e) {
-            if (!playheadClicked) {
+            if (!playheadClicked && allowMouseUp) {
                 // calculate the normalized position clicked
                 var clickPosition = ((e.pageX - this.offsetLeft) / this.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -242,6 +243,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 alert(clickTime);
                 //alert("click2");
                 playheadClicked = false;
+                allowMouseUp = false;
             }
         });
 
