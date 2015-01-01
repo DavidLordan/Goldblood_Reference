@@ -282,7 +282,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         
         $(document.documentElement).bind('touchend', function(e){
            clickedplayHead = false;
-           alert("false");
+         //  alert("false");
         });
 
 //git add . && git commit -m "testing" && git push
