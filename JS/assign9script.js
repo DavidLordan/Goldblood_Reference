@@ -281,7 +281,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
         
         $(document.documentElement).bind('touchend', function(e){
-           clickedplayHead = false;
+           playheadClicked = false;
          //  alert("false");
         });
 
