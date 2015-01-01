@@ -208,8 +208,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (true) {
                 //console.log(Math.floor(e.pageX)); 
                 alert("iono");
-                endCoords = e.originalEvent.targetTouches[0];
-                var mousePos = Math.floor(e.pageX);
+                var endCoords = e.originalEvent.targetTouches[0];
+                var mousePos = Math.floor(endCoords);
                 bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
             }
         });
