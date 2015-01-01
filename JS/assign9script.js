@@ -232,7 +232,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             if (playheadClicked) {
                 alert("ended");
                 //    console.log("up");
-                playheadClicked = false;
+                
                 var mousePos = Math.floor(e.pageX);
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
@@ -240,6 +240,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 myAudio.currentTime = clickTime;
                 alert(clickTime);
                 //alert("click2");
+                playheadClicked = false;
             }
         });
 
