@@ -236,7 +236,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 myAudio.currentTime = clickTime;
-                alert("click2");
+                alert(clickTime);
+                //alert("click2");
             }
         });
 
