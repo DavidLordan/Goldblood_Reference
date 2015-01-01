@@ -229,7 +229,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             }
         });
         
-        document.addEventListener('mouseup', function (e) {
+        document.addEventListener('touchend', function (e) {
             if (playheadClicked) {
                 alert("ended");
                 //    console.log("up");
