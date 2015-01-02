@@ -64,7 +64,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.currentSongList = "GB_songs";
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
-    $scope.tableName = "Finished Songs";
     var usingMouse = false;
 
     //The movable song is updated when the corresponding radio box is clicked.
@@ -133,17 +132,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.changeList = function (listName) {
 
         $scope.currentSongList = listName;
-
-        if (listName === "GB_songs") {
-            $scope.tableName = "Finished Songs";
-        }
-        if (listName === "GB_ideas") {
-            $scope.tableName = "Song Ideas";
-        }
-        if (listName === "GB_Notation") {
-            $scope.tableName = "Notes";
-        }
-
         //Fetches the song list, stored in a JSON file, via AJAX
         $http.get('JSON/' + listName + '.json').success(function (data) {
 
