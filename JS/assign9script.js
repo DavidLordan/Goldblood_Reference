@@ -248,21 +248,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
 
-        $(document.documentElement).bind('mousemove', function (e) {
-            alert("mousemove");
-            if (playheadClicked) {
-               // alert("mousemove");
-                var mousePos = Math.floor(e.pageX);
-                e.stopPropagation();
-                e.preventDefault();
-                var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-                myAudio.currentTime = clickTime;
-                bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
-
-            }
-
-        });
+       
 
 
 
