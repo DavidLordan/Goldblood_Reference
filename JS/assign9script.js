@@ -249,8 +249,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         $(document.documentElement).bind('mousemove', function (e) {
+            alert("mousemove");
             if (playheadClicked) {
-                alert("mousemove");
+               // alert("mousemove");
                 var mousePos = Math.floor(e.pageX);
                 e.stopPropagation();
                 e.preventDefault();
