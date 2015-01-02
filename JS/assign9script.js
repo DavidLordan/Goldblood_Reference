@@ -229,8 +229,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(document).bind('touchmove', function (e) {
 
+        if(!playheadClicked){
             alert(playheadClicked);
-            
+        }
             var endCoords = e.originalEvent.targetTouches[0];
             var mousePos = Math.floor(endCoords.pageX);
             var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
