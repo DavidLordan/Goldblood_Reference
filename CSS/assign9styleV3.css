@@ -30,10 +30,14 @@ table{
     box-shadow: 1px 1px 2px black;   
     color:white;
     width:100%;
+    text-align: center;
 }
 
 .Intro p{
+    text-align: center;
     font-size: 1.2em;
+    max-width: 75%;
+    margin: auto;
 }
 
 .Intro h1{
@@ -266,16 +270,25 @@ button{
         width: 90%;
     }
     #bar{
-        min-width: 99%;
+        max-width: 97%;
+        //max-height: 10px;
     }
     #circle1{
+       width: 10px;
+        //height: 12px;
         white-space: nowrap;
         overflow: hidden;
+        margin-left: 0px;
         // display: inline-block;
     }
+    #circle2{
+        //display:none;
+    }
+    
+    
     #progress{
         //  text-wrap: none;
-        height: 11px;
+       // height: 5px;
         // display: inline-block;
         // white-space: nowrap;
         //overflow: hidden;
@@ -304,3 +317,4 @@ button{
 #sublistContainer .row{
     width: 75%;
 }
+
