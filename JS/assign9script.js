@@ -166,10 +166,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
         else {
             usingMouse = true;
-            if(Math.abs(position - e.pageX) < 15){
-              //  console.log("headTouched");
+            alert("wrongOne");
+            if (Math.abs(position - e.pageX) < 15) {
+                alert("headTouched");
+                //  console.log("headTouched");
                 return true;
-            }else{
+            } else {
+                alert("headUnTouched");
                 //console.log("headUnTouched");
                 return false;
             }
@@ -219,6 +222,11 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
+
+
+
+
+
         $(document).bind('touchmove', function (e) {
 
             var endCoords = e.originalEvent.targetTouches[0];
@@ -262,7 +270,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $(progress).bind("mouseup", function (e) {
 
             if (!playheadClicked) {
-               // console.log("thisguy");
+                // console.log("thisguy");
                 var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
                 // move the playhead to the correct position
@@ -278,7 +286,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
 
-
+// Leave these alone!!!
         $(document.documentElement).bind("mouseup", function (e) {
             playheadClicked = false;
         });
