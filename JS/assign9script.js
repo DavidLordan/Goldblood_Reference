@@ -229,7 +229,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             
             $(progress).bind('touchend', function(e){
                 if(!playheadClicked){
+                    if(typeof e.changedTouches !== 'undefined'){
                     alert(e.changedTouches[0].pageX);
+                }
+                else{
+                    alert("nope");
+                }
                 }
             });
             $(document.documentElement).bind('touchend', function (e) {
