@@ -173,7 +173,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     //Initializes and maintains progress bar
     $scope.load = function () {
 
-        alert(mobileCheck());
+
         var progress = document.getElementById('progress');
         var myAudio = document.getElementById('my-audio');
         var bar = document.getElementById('bar');
@@ -201,53 +201,50 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
 
-
         $(progress).bind("mousedown touchstart", function (e) {
             console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
 
-        $(document).bind('touchmove', function (e) {
+        if (mobileCheck()) {
+            $(document).bind('touchmove', function (e) {
 
-            var endCoords = e.originalEvent.targetTouches[0];
-            var mousePos = Math.floor(endCoords.pageX);
-            var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
-            var clickTime = (clickPosition * myAudio.duration);
-
-            if (playheadClicked) {
-                bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
-                myAudio.currentTime = clickTime;
-            }
-
-        });
-
-
-
-
-
-        $(document.documentElement).bind('mousemove', function (e) {
-            if (playheadClicked) {
-
-                alert("mousemove");
-                var mousePos = Math.floor(e.pageX);
-                e.stopPropagation();
-                e.preventDefault();
-                var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
+                var endCoords = e.originalEvent.targetTouches[0];
+                var mousePos = Math.floor(endCoords.pageX);
+                var clickPosition = ((mousePos - progress.offsetLeft) / progress.offsetWidth);
                 var clickTime = (clickPosition * myAudio.duration);
-                myAudio.currentTime = clickTime;
-                bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
 
-            }
+                if (playheadClicked) {
+                    bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+                    myAudio.currentTime = clickTime;
+                }
 
+            });
+            $(document.documentElement).bind('touchend', function (e) {
+                playheadClicked = false;
+            });
+        }
+        else {
+            $(document.documentElement).bind('mousemove', function (e) {
+                if (playheadClicked) {
+
+                    alert("mousemove");
+                    var mousePos = Math.floor(e.pageX);
+                    e.stopPropagation();
+                    e.preventDefault();
+                    var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
+                    var clickTime = (clickPosition * myAudio.duration);
+                    myAudio.currentTime = clickTime;
+                    bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+
+                }
+
+            });
+            $(document.documentElement).bind("mouseup", function (e) {
+            playheadClicked = false;
         });
-
-
-
-
-
-
-
+        }
 
         $(progress).bind("mouseup", function (e) {
 
@@ -263,18 +260,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
 
-
-
-
-
-
 // Leave these alone!!!
-        $(document.documentElement).bind("mouseup", function (e) {
-            playheadClicked = false;
-        });
-        $(document.documentElement).bind('touchend', function (e) {
-            playheadClicked = false;
-        });
+        
+
 
 //git add . && git commit -m "testing" && git push
 
