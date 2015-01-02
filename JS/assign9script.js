@@ -230,7 +230,13 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             
             $(progress).bind('touchend', function(e){
                 if(!playheadClicked){
-                    alert(startCoord);
+                  
+                    e.stopPropagation();
+                    e.preventDefault();
+                    var clickPosition = ((startCoord - progress.offsetLeft) / progress.offsetWidth);
+                    var clickTime = (clickPosition * myAudio.duration);
+                    myAudio.currentTime = clickTime;
+                    bar.style.width = (((((startCoord - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%";
                 }
             });
             $(document.documentElement).bind('touchend', function (e) {
