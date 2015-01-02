@@ -208,7 +208,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             var startCoord = 0;
             $(progress).bind("touchstart", function (e) {
             startCoord = e.pageX;
-            alert("touch "+e.pageX);
+       //     alert("touch "+e.pageX);
             playheadClicked = $scope.clickedPlayhead(e, this);
             
         });
