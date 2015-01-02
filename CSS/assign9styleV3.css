@@ -247,18 +247,60 @@ button{
     text-align: right;
 }
 
-@media only screen and (max-width: 500px){
+#sublistContainer .sublist{
+    text-align: center;
+    margin: auto;
+}
+
+@media only screen and (max-width: 768px){
     body{
         font-size: .9em;
     }
-    
-    
+
+
     #setlist table td{
         padding:2px;
     }
-    
+
     #tableDiv{
         width: 90%;
     }
+    #bar{
+        min-width: 99%;
+    }
+    #circle1{
+        white-space: nowrap;
+        overflow: hidden;
+        // display: inline-block;
+    }
+    #progress{
+        //  text-wrap: none;
+        height: 11px;
+        // display: inline-block;
+        // white-space: nowrap;
+        //overflow: hidden;
+    }
+
     
+    #sublistContainer .sublist input{
+        //text-align: center;
+        margin: auto;
+        max-width: 80%;
+        //  margin: 10px;;
+    }
+}
+
+#sublistContainer .row .innerPad input{
+    width: 100%;
+    margin:  auto;
+    text-align: center;
+    
+}
+#sublistContainer .row .innerPad{
+    padding: 10px;
+}
+
+
+#sublistContainer .row{
+    width: 75%;
 }

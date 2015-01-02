@@ -35,12 +35,25 @@
 
 
                 <div id="sublistContainer">
-                    <div class="sublist">
-                        <input type="button" class="btn-primary" value="Finished Songs" ng-click="changeList('GB_songs')"/>
-                        <input type="button" class="btn-warning" value="Incomplete Songs/Ideas" ng-click="changeList('GB_ideas')"/>
+                    <div class="sublist row">
+                        <div class="innerPad col-xs-12 col-sm-6">
+                            <input type="button" class="btn-primary" value="Finished Songs" ng-click="changeList('GB_songs')"/>
+                        </div>
+                        <div class="innerPad col-xs-12 col-sm-6">
+                            <input type="button" class="btn-warning" value="Incomplete Songs/Ideas" ng-click="changeList('GB_ideas')"/>
+                        </div>
+                    </div>
 
-                        <input type="button" class="btn-danger" value="Notes" ng-click="changeList('GB_Notation')"/>
-                        <input type="button" class="btn-success" value="Downloads" ng-click="download(s)"/>
+
+                    <div class ="sublist row">
+                        <div class="innerPad  col-xs-12 col-sm-6">
+                            <input type="button" class="btn-danger" value="Notes" ng-click="changeList('GB_Notation')"/>
+                        </div>
+
+                        <div class="innerPad  col-xs-12 col-sm-6">
+                            <input type="button" class="btn-success" value="Downloads" ng-click="download(s)"/>
+                        </div>
+
                     </div>
                 </div>
 
@@ -77,9 +90,9 @@
                 </div><!-- End interaction div-->
 
 
-                
+
                 <div id="tableDiv">
-                    
+
                     <table>
                         <!-- Table headers for the playlist songs names and lengths.-->
                         <tr>
