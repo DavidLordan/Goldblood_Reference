@@ -201,7 +201,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
 
-        $(progress).bind("mousedown touchstart", function (e) {
+        $(progress).bind("mousedown", function (e) {
             console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
@@ -216,10 +216,17 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 var clickTime = (clickPosition * myAudio.duration);
 
                 if (playheadClicked) {
+                    e.preventDefault();
                     bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
                     myAudio.currentTime = clickTime;
                 }
+               
 
+            });
+            $(progress).bind('touchend', function(e){
+                if(!playheadClicked){
+                    alert("dude");
+                }
             });
             $(document.documentElement).bind('touchend', function (e) {
                 playheadClicked = false;
