@@ -229,7 +229,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $(document.documentElement).bind('mousemove', function (e) {
                 if (playheadClicked) {
 
-                  //  alert("mousemove");
+                    //  alert("mousemove");
                     var mousePos = Math.floor(e.pageX);
                     e.stopPropagation();
                     e.preventDefault();
@@ -242,26 +242,27 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
             });
             $(document.documentElement).bind("mouseup", function (e) {
-            playheadClicked = false;
-        });
+                playheadClicked = false;
+            });
+            $(progress).bind("mouseup", function (e) {
+
+                if (!playheadClicked) {
+                    // console.log("thisguy");
+                    var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
+                    var clickTime = (clickPosition * myAudio.duration);
+                    // move the playhead to the correct position
+                    myAudio.currentTime = clickTime;
+                    bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+                    // playheadClicked = false;
+                }
+            });
         }
 
-        $(progress).bind("mouseup", function (e) {
 
-            if (!playheadClicked) {
-                // console.log("thisguy");
-                var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
-                var clickTime = (clickPosition * myAudio.duration);
-                // move the playhead to the correct position
-                myAudio.currentTime = clickTime;
-                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
-                // playheadClicked = false;
-            }
-        });
 
 
 // Leave these alone!!!
-        
+
 
 
 //git add . && git commit -m "testing" && git push
