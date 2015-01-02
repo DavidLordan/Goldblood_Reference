@@ -192,7 +192,7 @@ table{
     border-left-width: 1px;
 }
 
-#sublistContainer .sublist input{
+#sublistContainer .sublist .myInputs{
     font-family: 'Open Sans', sans-serif;
     height: 40px;
     margin:5px;
@@ -201,7 +201,7 @@ table{
     font-size: 1.3em;
 }
 
-.sublist input:active {
+.sublist .myInputs:active {
     background-color: #33ffcc;
 }
 
@@ -290,7 +290,7 @@ button{
     #circle2{
         width: 11px;
     }
-    #sublistContainer .sublist input{
+    #sublistContainer .sublist .myInputs{
         //text-align: center;
         margin: auto;
         max-width: 80%;
@@ -302,7 +302,7 @@ button{
     }
 }
 
-#sublistContainer .row .innerPad input{
+#sublistContainer .row .innerPad .myInputs{
     width: 100%;
     margin:  auto;
     text-align: center;
