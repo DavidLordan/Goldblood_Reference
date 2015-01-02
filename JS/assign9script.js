@@ -203,15 +203,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
-
         if (mobileCheck()) {
             var startCoord = 0;
             $(progress).bind("touchstart", function (e) {
-            startCoord = e.originalEvent.targetTouches[0].pageX;
-            //alert("touch "+ startCoord);
-            playheadClicked = $scope.clickedPlayhead(e, this);
-            
-        });
+                startCoord = e.originalEvent.targetTouches[0].pageX;
+                playheadClicked = $scope.clickedPlayhead(e, this);
+            });
             $(document).bind('touchmove', function (e) {
 
                 var endCoords = e.originalEvent.targetTouches[0];
@@ -224,13 +221,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                     bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
                     myAudio.currentTime = clickTime;
                 }
-               
+
 
             });
-            
-            $(progress).bind('touchend', function(e){
-                if(!playheadClicked){
-                  
+            $(progress).bind('touchend', function (e) {
+                if (!playheadClicked) {
+
                     e.stopPropagation();
                     e.preventDefault();
                     var clickPosition = ((startCoord - progress.offsetLeft) / progress.offsetWidth);
@@ -244,10 +240,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             });
         }
         else {
-            $(document.documentElement).bind('mousemove', function (e) {
+            $(document.documentElement).bind('mousemove touchmove', function (e) {
                 if (playheadClicked) {
 
-                    //  alert("mousemove");
                     var mousePos = Math.floor(e.pageX);
                     e.stopPropagation();
                     e.preventDefault();
@@ -277,14 +272,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         }
 
 
-
-
-// Leave these alone!!!
-
-
-
 //git add . && git commit -m "testing" && git push
-
 
     };
 
