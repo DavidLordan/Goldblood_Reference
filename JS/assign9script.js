@@ -193,7 +193,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $scope.timeRemaining = Math.floor(myAudio.duration) - Math.floor(myAudio.currentTime);
             $scope.$apply();
             if (!playheadClicked) {
-                bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
+                bar.style.width = parseFloat(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
             }
 
         });
@@ -249,7 +249,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                     var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                     var clickTime = (clickPosition * myAudio.duration);
                     myAudio.currentTime = clickTime;
-                    bar.style.width = Math.floor((((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100)) + "%";
+                    bar.style.width = (((((mousePos - progress.offsetLeft) / progress.offsetWidth) * myAudio.duration) / myAudio.duration) * 100) + "%";
 
                 }
 
