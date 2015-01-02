@@ -208,7 +208,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             var startCoord = 0;
             $(progress).bind("touchstart", function (e) {
             startCoord = e.originalEvent.targetTouches[0].pageX;
-            alert("touch "+ startCoord);
+            //alert("touch "+ startCoord);
             playheadClicked = $scope.clickedPlayhead(e, this);
             
         });
@@ -230,7 +230,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             
             $(progress).bind('touchend', function(e){
                 if(!playheadClicked){
-                    alert(e.originalEvent.targetTouches[0].pageX);
+                    alert(startCoord);
                 }
             });
             $(document.documentElement).bind('touchend', function (e) {
