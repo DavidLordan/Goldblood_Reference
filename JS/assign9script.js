@@ -208,6 +208,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         if (mobileCheck()) {
+            $(progress).bind("touchstart", function (e) {
+            console.log("touch");
+            playheadClicked = $scope.clickedPlayhead(e, this);
+        });
             $(document).bind('touchmove', function (e) {
 
                 var endCoords = e.originalEvent.targetTouches[0];
