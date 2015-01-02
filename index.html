@@ -70,11 +70,13 @@
                     <div id="controls">
                         <!-- custom play and pause buttons -->
                         <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
-
-                        <div id="nowPlaying">
+                        
+                        
+                        <div id="nowPlaying"><span>&nbsp;{{nowPlaying}}&nbsp;</span></div>
+                        <div id="time">
 
                             <span id="timeSpent">{{timeSpent| number:0|timeFilter}}</span>
-                            <span>&nbsp;{{nowPlaying}}&nbsp;</span>
+                            
                             <span id="timeRemaining">-{{timeRemaining| number:0 |timeFilter}}</span>
 
                         </div>

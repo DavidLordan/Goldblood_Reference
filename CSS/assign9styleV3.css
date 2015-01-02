@@ -85,13 +85,15 @@ table{
 }
 
 #progress {
-    margin: 0px 50px 10px 50px;
+    margin: 0px 40px 10px 40px;
     border: 3px solid;
     border-color: white;
     border-radius: 13px;
     cursor: pointer;
     background-color: black;
-    min-height: 21px;
+    height: 21px;
+    
+    
 }
 
 #bar {
@@ -270,27 +272,32 @@ button{
         width: 90%;
     }
     #bar{
-        max-width: 97%;
-        //max-height: 10px;
+        min-width: 1%;
+        min-width: 24%;
+        height: 100%;
     }
     #circle1{
-       width: 10px;
-        //height: 12px;
+       width: 12px;
+        height: 12px;
         white-space: nowrap;
         overflow: hidden;
         margin-left: 0px;
+        margin-right: -10px;
+        //display: none;
         // display: inline-block;
     }
     #circle2{
-        //display:none;
+        height: 11px;
     }
     
     
     #progress{
-        //  text-wrap: none;
-       // height: 5px;
-        // display: inline-block;
-        // white-space: nowrap;
+          //text-wrap: none;
+       height: 15px;
+       //margin-right: -20px;
+        
+         //display: inline-block;
+         //white-space: nowrap;
         //overflow: hidden;
     }
 
@@ -300,6 +307,10 @@ button{
         margin: auto;
         max-width: 80%;
         //  margin: 10px;;
+    }
+    
+    #nowPlaying{
+        padding:10px;
     }
 }
 
@@ -318,3 +329,7 @@ button{
     width: 75%;
 }
 
+#time{
+    color: white;
+    margin: 10px;
+}
