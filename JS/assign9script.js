@@ -173,12 +173,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     //Initializes and maintains progress bar
     $scope.load = function () {
 
-
         var progress = document.getElementById('progress');
         var myAudio = document.getElementById('my-audio');
         var bar = document.getElementById('bar');
         var playheadClicked = false;
-
 
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
@@ -200,7 +198,6 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         });
 
-
         $(progress).bind("mousedown", function (e) {
             console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
@@ -208,9 +205,11 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
         if (mobileCheck()) {
+            
             $(progress).bind("touchstart", function (e) {
             console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
+            
         });
             $(document).bind('touchmove', function (e) {
 
@@ -227,9 +226,10 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                
 
             });
+            
             $(progress).bind('touchend', function(e){
                 if(!playheadClicked){
-                    alert("dude");
+                    alert(e.pageX);
                 }
             });
             $(document.documentElement).bind('touchend', function (e) {
