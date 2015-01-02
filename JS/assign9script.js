@@ -207,8 +207,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         if (mobileCheck()) {
             var startCoord = 0;
             $(progress).bind("touchstart", function (e) {
-            startCoord = e.pageX;
-       //     alert("touch "+e.pageX);
+            startCoord = e.originalEvent.targetTouches[0].pageX;
+            alert("touch "+ startCoord);
             playheadClicked = $scope.clickedPlayhead(e, this);
             
         });
