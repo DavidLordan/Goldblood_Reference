@@ -129,10 +129,10 @@
 
 
 
-                                
-                                    <span ng-class="{hidden: currentSongList !== 'GB_Downloads'} " id="downloadLabel">{{i.name}}</span>
-                                    <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ng-class="{hidden: currentSongList !== 'GB_Downloads'} "></span> 
-                                
+                                <div id="dlContainer" ng-class="{hidden: currentSongList !== 'GB_Downloads'} ">
+                                    <span  id="downloadLabel">{{i.name}}</span>
+                                    <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ></span> 
+                                </div>
 
 
 
