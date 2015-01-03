@@ -197,7 +197,6 @@ table{
     height: 40px;
     margin:5px;
     margin-bottom: 10px;
-    //text-decoration: underline;
     font-size: 1.3em;
 }
 
@@ -267,7 +266,7 @@ button{
 
 
     #setlist table td{
-        padding:2px;
+        padding:6px;
     }
 
     #tableDiv{
@@ -276,11 +275,11 @@ button{
     #bar{
         margin-right: -12px;
         margin-left: 3px;
-       // min-width: 50%;
+        // min-width: 50%;
     }
-    
+
     #progress{
-       // border-width: 2px;
+        // border-width: 2px;
     }
     #circle1{
         width: 12px;
@@ -320,4 +319,36 @@ button{
 #time{
     color: white;
     margin: 10px;
+}
+
+.hidden{
+    display:none;
+}
+
+
+.downloads{
+    float:right;
+    margin: 0;
+   // background: black;
+   // color: red;
+    padding-right: -2px;
+    //border-radius: 10px;
+    margin-left: -35px;
+    margin-right: 15px;
+    font-size: 1.3em;
+
+}
+
+.downloads:hover{
+    color: #6600cc;
+    cursor: pointer;
+   // border-style: solid;
+    //border-color: black;
+    //border-width: 1px;
+}
+
+#outerDownloadDiv{
+    max-width: 100%;
+    min-width: 100%;
+
 }

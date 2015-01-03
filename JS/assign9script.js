@@ -61,7 +61,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.playbackIcon = "Resources/playIcon.png";
     $scope.audioActive = "";
     $scope.nowPlaying = "";
-    $scope.currentSongList = "GB_songs";
+    $scope.currentSongList = "GB_Downloads";
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
     var usingMouse = false;
@@ -103,8 +103,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     };
 
-    $scope.download = function () {
-        document.location.href = "https://github.com/DavidLordan/Goldblood_Reference/blob/gh-pages/Audio/GB_Songs.zip?raw=true";
+    $scope.startDownload = function (name) {
+        console.log(name);
+        window.open("https://github.com/DavidLordan/Goldblood_Reference/blob/gh-pages/Audio/Zip_files/ "+ name +".zip?raw=true");
     };
 
     //Adjusts playback icon

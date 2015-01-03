@@ -62,9 +62,9 @@
                         </div>
 
                         <div class="innerPad  col-xs-12 col-sm-6">
-                            <button type="button" class="btn-success myInputs" ng-click="download(s)">
+                            <button type="button" class="btn-success myInputs" ng-click="changeList('GB_Downloads')">
                                 <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
-                                <span>Download All Audio</span>
+                                <span>Downloads</span>
                             </button>
                         </div>
 
@@ -125,7 +125,17 @@
                                  When the song names are clicked the 'setSwapClass' function is called.-->
 
                             <td class="songRow">
-                                <button ng-click="updateActive(i)">{{i.name}}</button>
+                                <button ng-class="{hidden: currentSongList === 'GB_Downloads'} " ng-click="updateActive(i)">{{i.name}}</button>
+
+
+
+                                
+                                    <span ng-class="{hidden: currentSongList !== 'GB_Downloads'} " id="downloadLabel">{{i.name}}</span>
+                                    <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ng-class="{hidden: currentSongList !== 'GB_Downloads'} "></span> 
+                                
+
+
+
                             </td>
                         </tr>
 
