@@ -61,7 +61,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     $scope.playbackIcon = "Resources/playIcon.png";
     $scope.audioActive = "";
     $scope.nowPlaying = "";
-    $scope.currentSongList = "GB_Downloads";
+    $scope.currentSongList = "GB_songs";
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
     var usingMouse = false;
