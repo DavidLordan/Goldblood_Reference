@@ -175,7 +175,7 @@ table{
     border-width: 2px;
 }
 
-#numHeader{
+.numHeader{
     border-right-style: solid;
     border-right-color: white;
     border-left-style: solid;
@@ -184,12 +184,16 @@ table{
     width: 10px;
 }
 
-#songHeader{
+.songHeader{
     border-left-style: solid;
     border-left-color: white;
     border-right-style: solid;
     border-right-color: black;
     border-left-width: 1px;
+}
+
+.dlHeader{
+    width: 10px;
 }
 
 #sublistContainer .sublist .myInputs{
@@ -325,30 +329,32 @@ button{
     display:none;
 }
 
+.dlHeader{
+    border-right: solid;
+    border-right-color: black;
+}
+
+
 
 .downloads{
-    float:right;
-    margin: 0;
+    //float:right;
+    //margin: 0;
    // background: black;
    // color: red;
-    padding-right: -2px;
+    //padding-right: -2px;
     //border-radius: 10px;
-    margin-left: -35px;
-    margin-right: 15px;
-    font-size: 1.3em;
+    //margin-left: -35px;
+    //margin-right: 15px;
+   // font-size: 1.3em;
 
 }
 
 .downloads:hover{
     color: #6600cc;
     cursor: pointer;
-   // border-style: solid;
-    //border-color: black;
-    //border-width: 1px;
 }
 
-#outerDownloadDiv{
-    max-width: 100%;
-    min-width: 100%;
 
+.unclickable{
+    cursor: default;
 }

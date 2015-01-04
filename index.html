@@ -109,13 +109,35 @@
 
                 <div id="tableDiv">
 
-                    <table>
+                    <table ng-class="{hidden: currentSongList === 'GB_Downloads'}">
                         <!-- Table headers for the playlist songs names and lengths.-->
                         <tr>
-                            <th id="numHeader">#</th>
-                            <th id="songHeader">{{tableName}}</th>
+                            <th class="numHeader">#</th>
+                            <th class="songHeader">{{tableName}}</th>
                         </tr>
 
+
+                        <tr ng-class="{move: i.name === audioActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
+                            <td>{{$index + 1}}</td>
+                            <!-- The list of song names. Makes use of the ng-class attribute to add
+                                 remove classes which allow the colors of selected songs to be changed.
+                                 When the song names are clicked the 'setSwapClass' function is called.-->
+                            <td class="songRow">
+                                <button ng-click="updateActive(i)">{{i.name}}</button>
+                            </td>
+                        </tr>
+
+                    </table><!-- End of play list table.-->
+
+
+
+
+                    <table ng-class="{hidden: currentSongList !== 'GB_Downloads'} ">
+                        <tr>
+                            <th class="numHeader">#</th>
+                            <th class="songHeader">{{tableName}}</th>
+                            <th class="dlHeader"></th>
+                        </tr>
 
                         <tr ng-class="{move: i.name === audioActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
 
@@ -125,22 +147,22 @@
                                  When the song names are clicked the 'setSwapClass' function is called.-->
 
                             <td class="songRow">
-                                <button ng-class="{hidden: currentSongList === 'GB_Downloads'} " ng-click="updateActive(i)">{{i.name}}</button>
-
-
-
-                                <div id="dlContainer" ng-class="{hidden: currentSongList !== 'GB_Downloads'} ">
-                                    <span  id="downloadLabel">{{i.name}}</span>
-                                    <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ></span> 
-                                </div>
-
-
-
+                                <button class="unclickable">{{i.name}}</button>
                             </td>
-                        </tr>
 
-                    </table><!-- End of play list table.-->
+                            <td>
+                            
+                                    <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ></span> 
+                                
+                            </td>
+                           
+                           
+                        </tr>
+                    </table>
                 </div>
+
+
+
             </div><!-- End setlist div.-->
         </div><!-- End container -->
 
