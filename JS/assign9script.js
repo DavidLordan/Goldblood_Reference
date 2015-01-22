@@ -6,31 +6,9 @@
  Alternate email: davidlordan@gmail.com
  Created on Dec 6th, 2014 11:30 AM, updated on Dec 10th, 2014 9:25 PM
  
- The purpose of this assignment is to demonstrate the use of AngularJS.
- Data is to be read from a JSON file via Ajax and dispalyed to the user.
- The user can then manipulate the data in some way.
- 
- For this assignment I created a setlist/playlist maker. A list of Led Zeppelin
- songs taken from a JSON file are shown. The user may then use check-boxes to
- select songs which are to be added to a 2nd list. The ordering of the 2nd list
- may be manipulated by either clicking on a pair of songs which can be swapped,
- or by using a radio button to select a song that may be moved with up and down
- buttons. A running total of the length is shown at the bottom of the list.
- All of the listed information as well as the total length are filtered using
- AngularJS. The ng-class attribute is also used to add and remove classes
- which allow color coding of various states, such as showing which songs are 
- active.
- 
- 
- The majority of this code is based on the examples provided by Curran Kelleher
- which can be found at the following URL: 
- http://curran.github.io/screencasts/introToAngular/exampleViewer/#/
- 
- Other parts of the code were taken from the sample code provided by 
- Prof. Jesse Heines for his GUI Programming 1 course at UMass Lowell.
- 
- This file includes several custom function and makes extensive use of the AngularJS
- framework to control the page's behavior. 
+ This is the JavaScript file which contains many functions used to implement
+ a band organization site. This particular example is used for the GoldBlood 
+ reference page. 
  
  */
 
@@ -40,12 +18,6 @@
 //  assing9 is the angular module for the entire page.
 var assign9 = angular.module('assign9', []);
 
-//  The total length of the setlist.
-var total = 0;
-
-// An array of the two songs which are currently swappable. 
-var selected = [];
-
 //AngularJS controller. 
 assign9.controller("assign9Ctrl", function ($scope, $http) {
 
@@ -54,28 +26,36 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         $scope.myList = data;
     });
 
-    // The next position of the song to be added. Also used to determine the number of songs
-    // in the list. 
-    $scope.nextPos = 0;
     $scope.playing = false;
     $scope.playbackIcon = "Resources/playIcon.png";
+
+    //audioActive is used to store the currenly selected song and its associated information.
     $scope.audioActive = "";
+
+    //The song name currenly being played.
     $scope.nowPlaying = "";
+
+    //Default song list.
     $scope.currentSongList = "GB_songs";
+
+    //Current time of a song and the time remaining.
     $scope.timeSpent = "";
     $scope.timeRemaining = "";
-    var usingMouse = false;
 
-    //The movable song is updated when the corresponding radio box is clicked.
+    //Updates the active/playing song when clicked. 
     $scope.updateActive = function (i) {
+
+        //If the current list is a 'playable' list, the audio player is reset. 
         if ($scope.currentSongList === "GB_ideas" || $scope.currentSongList === "GB_songs") {
 
+            //Pauses whatever song is playing, resetting the audio player. 
             $scope.nowPlaying = "";
             myAudio = document.getElementById('my-audio');
             $scope.playbackIcon = "Resources/playIcon.png";
             myAudio.pause();
             $scope.playing = false;
 
+            //Resets the playhead to 0. There should be a reset() function in future versions.
             if (myAudio.currentTime !== 0) {
 
                 myAudio.currentTime = 0;
@@ -85,7 +65,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 bar.style.width = 0;
 
             }
-
+            //Updates the 'moveActive' object to be the song clicked. Also gets the song name
+            // and stores it in the audioActive object. 
             if ($scope.moveActive !== i) {
                 $scope.moveActive = i;
                 $scope.audioActive = $scope.moveActive.name;
@@ -95,7 +76,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 $scope.audioActive = "";
             }
         }
-
+        //If the current list is the available notation, opens a new window with the appropriate pdf file. 
         if ($scope.currentSongList === "GB_Notation") {
             window.open("http://davidlordan.github.io/Goldblood_Reference/Resources/" + i.name + ".pdf");
         }
@@ -103,12 +84,12 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     };
 
+    //Initializes a download of a zip file of the appropriate song.
     $scope.startDownload = function (name) {
-        console.log(name);
-        window.open("https://github.com/DavidLordan/Goldblood_Reference/blob/gh-pages/Audio/Zip_files/ "+ name +".zip?raw=true");
+        window.open("https://github.com/DavidLordan/Goldblood_Reference/blob/gh-pages/Audio/Zip_files/ " + name + ".zip?raw=true");
     };
 
-    //Adjusts playback icon
+    //Toggles the playback. Pauses if playing, plays if paused.
     $scope.togglePlayback = function () {
 
         var myAudio = document.getElementById('my-audio');
@@ -141,7 +122,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
     };
 
-
+    // Used to drage the playhead to a desired location.
     $scope.clickedPlayhead = function (e, doc) {
         var clickPosition = (e.pageX - doc.offsetLeft) / doc.offsetWidth;
         var p = $("#circle1");
@@ -159,6 +140,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
     };
+
+
     //Initializes and maintains progress bar
     $scope.load = function () {
 
@@ -167,6 +150,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         var bar = document.getElementById('bar');
         var playheadClicked = false;
 
+        //When the song ends, the playhead is reset. Again, there should be a reset function in here. 
         myAudio.addEventListener("ended", function () {
             $scope.playbackIcon = "Resources/playIcon.png";
             $scope.nowPlaying = "";
@@ -176,6 +160,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             console.log($scope.nowPlaying);
             this.currentTime = 0;
         });
+
+        //Continously updates the current time of the song and moves the playhead accordingly. 
         myAudio.addEventListener('timeupdate', function () {
 
             $scope.timeSpent = Math.floor(myAudio.currentTime);
@@ -188,10 +174,11 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
         });
 
         $(progress).bind("mousedown", function (e) {
-            console.log("touch");
             playheadClicked = $scope.clickedPlayhead(e, this);
         });
 
+
+        //If the user is on a mobile browser, touch events are used to handle playhead manipulation. 
         if (mobileCheck()) {
             var startCoord = 0;
             $(progress).bind("touchstart", function (e) {
@@ -213,6 +200,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
 
             });
+
+
             $(progress).bind('touchend', function (e) {
                 if (!playheadClicked) {
 
@@ -228,6 +217,8 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 playheadClicked = false;
             });
         }
+
+        //If not on a mobile browser, mouse events are used for playhead manipulation.
         else {
             $(document.documentElement).bind('mousemove touchmove', function (e) {
                 if (playheadClicked) {
@@ -259,12 +250,9 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
                 }
             });
         }
-
-
-//git add . && git commit -m "testing" && git push
-
     };
 
+    //Allows for the toggling of playback using the space bar.
     var keyValid = true;
     $(document).on('keydown', function (e) {
         if (e.key === " " && keyValid) {
@@ -297,11 +285,13 @@ assign9.filter("lengthFilter", function () {
         return front + ":" + str;
     };
 });
+
+//Custom filter for the song names. 
 assign9.filter("audioFilter", function () {
 
     return function (i) {
 
-        return "Audio/ " + i + ".mp3";
+        return "Audio/" + i + ".mp3";
     };
 });
 // Another custom filter that calulates the total time. As the total time is saved in
@@ -331,6 +321,10 @@ assign9.filter("timeFilter", function () {
     };
 });
 
+//Checks if the site is being used on mobile device. This is used to determine whether 
+// touch events or click events are to be used. 
+//This was found on the following Stack Overflow thread :
+// http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
 window.mobileCheck = function () {
     var check = false;
     (function (a, b) {

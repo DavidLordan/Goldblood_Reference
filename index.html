@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- Links to include bootstrap and jQuery. -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -26,6 +27,7 @@
     <!-- Directive which says this page will use the assign9Ctrl ng-controller. -->
     <body ng-controller="assign9Ctrl" ng-init='load()'>
 
+        <!-- Bootstrap container for the entire body.-->
         <div class="container">    
 
             <!-- Container for an introduction and instructions to the user.-->
@@ -33,8 +35,9 @@
                 <h1>Goldblood Songs</h1>
                 <p></p>
 
-
+                <!-- Container div for the UI buttons. -->
                 <div id="sublistContainer">
+
                     <div class="sublist row">
                         <div class="innerPad col-xs-12 col-sm-6">
                             <button type="button" class="btn-success myInputs" value="" ng-click="changeList('GB_songs')">
@@ -74,14 +77,15 @@
             </div><!-- End 'Intro' div.-->
 
 
-            <!-- Table which contains the playlist. The table is hidden if no songs have been added.-->
+            <!-- Div that contains the list of songs. An ng-class is applied to the different song groupings. -->
             <div id="setlist" ng-class="{ideas: currentSongList === 'GB_ideas'
                                         ,fin: currentSongList === 'GB_songs'
                                         ,notes: currentSongList === 'GB_Notation'
                                         ,downloads: currentSongList === 'GB_Downloads'}">
 
 
-                <!-- Div used to contain the up and down arrows, swap button and total length.-->
+
+                <!-- Container for the audio player. This includes the progress bar, play-head, song name and time.-->
                 <div id="interaction">
                     <audio id="my-audio" ng-src="{{audioActive|audioFilter}}"></audio>
 
@@ -89,12 +93,10 @@
                         <!-- custom play and pause buttons -->
                         <input type="image" ng-src="{{playbackIcon}}" alt="UP" ng-click="togglePlayback()"/>
 
-
                         <div id="nowPlaying"><span>&nbsp;{{nowPlaying}}&nbsp;</span></div>
                         <div id="time">
 
                             <span id="timeSpent">{{timeSpent| number:0|timeFilter}}</span>
-
                             <span id="timeRemaining">-{{timeRemaining| number:0 |timeFilter}}</span>
 
                         </div>
@@ -111,8 +113,11 @@
 
 
 
+                <!-- A container for the actual list of songs. -->
                 <div id="tableDiv">
 
+                    <!-- As the download table has a third column, it is built separately and then hidden when
+                         not in use. This should DEFINITELY be reimplemented with AJAX -->
                     <table ng-class="{hidden: currentSongList === 'GB_Downloads'}">
                         <!-- Table headers for the playlist songs names and lengths.-->
                         <tr>
@@ -120,12 +125,9 @@
                             <th class="songHeader">{{tableName}}</th>
                         </tr>
 
-
+                        <!-- Contains the song names and their index. -->
                         <tr ng-class="{move: i.name === audioActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
                             <td>{{$index + 1}}</td>
-                            <!-- The list of song names. Makes use of the ng-class attribute to add
-                                 remove classes which allow the colors of selected songs to be changed.
-                                 When the song names are clicked the 'setSwapClass' function is called.-->
                             <td class="songRow">
                                 <button ng-click="updateActive(i)">{{i.name}}</button>
                             </td>
@@ -135,7 +137,7 @@
 
 
 
-
+                    <!-- 2nd table for the download list. Again, this should be reimplemented.-->
                     <table ng-class="{hidden: currentSongList !== 'GB_Downloads'} ">
                         <tr>
                             <th class="numHeader">#</th>
@@ -145,27 +147,19 @@
 
                         <tr ng-class="{move: i.name === audioActive}" ng-repeat="i in myList| filter:query | orderBy:'pos'" >
 
+                            <!-- Container for song names, their index and a download link. -->
                             <td>{{$index + 1}}</td>
-                            <!-- The list of song names. Makes use of the ng-class attribute to add
-                                 remove classes which allow the colors of selected songs to be changed.
-                                 When the song names are clicked the 'setSwapClass' function is called.-->
-
                             <td class="songRow">
                                 <button class="unclickable">{{i.name}}</button>
                             </td>
 
                             <td>
-
                                 <span ng-click="startDownload(i.name)" class="downloads glyphicon glyphicon-floppy-save" ></span> 
-
                             </td>
-
 
                         </tr>
                     </table>
                 </div>
-
-
 
             </div><!-- End setlist div.-->
         </div><!-- End container -->
