@@ -24,6 +24,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 //Fetches the song list, stored in a JSON file, via AJAX
     $http.get('JSON/GB_songs.json').success(function (data) {
         $scope.myList = data;
+       // console.log("dude");
     });
 
     $scope.playing = false;
@@ -125,6 +126,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
     // Used to drage the playhead to a desired location.
     $scope.clickedPlayhead = function (e, doc) {
         var clickPosition = (e.pageX - doc.offsetLeft) / doc.offsetWidth;
+       // console.log("clickedplayhead: " + e.pageX);
         var p = $("#circle1");
         var position = p.position().left;
         var touchPos = 0;
@@ -157,7 +159,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $scope.$apply();
             $scope.togglePlayback();
 
-            console.log($scope.nowPlaying);
+            //console.log($scope.nowPlaying);
             this.currentTime = 0;
         });
 
@@ -175,6 +177,7 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
 
         $(progress).bind("mousedown", function (e) {
             playheadClicked = $scope.clickedPlayhead(e, this);
+            //console.log("test");
         });
 
 
@@ -240,9 +243,14 @@ assign9.controller("assign9Ctrl", function ($scope, $http) {
             $(progress).bind("mouseup", function (e) {
 
                 if (!playheadClicked) {
-                    // console.log("thisguy");
+                   //console.log("thisguy");
                     var clickPosition = ((e.pageX - progress.offsetLeft) / progress.offsetWidth);
                     var clickTime = (clickPosition * myAudio.duration);
+                    console.log("pageX: "+e.pageX);
+                    console.log("offsetLeft: "+progress.offsetLeft);
+                    console.log("offsetwidth: " +progress.offsetWidth);
+                    //console.log(clickPosition);
+                    //console.log(clickTime);
                     // move the playhead to the correct position
                     myAudio.currentTime = clickTime;
                     bar.style.width = parseInt(((myAudio.currentTime / myAudio.duration) * 100), 10) + "%";
